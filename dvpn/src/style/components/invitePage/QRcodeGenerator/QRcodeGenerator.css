@@ -1,0 +1,87 @@
+
+
+
+
+@media (max-width: 600px){
+    .QRcodeGenerator{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-top: 60px;
+        width: auto;
+    }
+
+    .QRcodeGenerator h1{
+        color: white;
+        font-size: 32px;
+    }
+
+    .QRcodeGenerator h3{
+        color: white;
+        margin-top: 0;
+        font-weight: 400;
+    }
+
+    .QRcodeGenerator h4{
+        color: white;
+        margin-top: -10px;
+        font-weight: 300;
+    }
+
+    .QRcodeGenerator h2{
+        color: white;
+        margin-top: -10px;
+        font-weight: 300;
+        font-size: 15px;
+    }
+
+    .QRContainer {
+        width: 380px;
+        border-radius: 20px;
+        height: 250px;
+    }
+    .QRContainer::-webkit-scrollbar {
+        display: none;
+    }
+
+    .QROne{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #141414;
+        border-radius: 40px;
+        margin-top: 60px;
+    }
+
+    .QROne p{
+        color: white;
+        padding-top: 25px;
+    }
+
+    .domaintypeblock{
+        -webkit-tap-highlight-color: transparent;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to right, #08BBFF, #2A76FF);
+        top: 10px;
+        position: absolute;
+        border: none;
+    }
+    .domaintypeblock:focus{
+        background: linear-gradient(to right, #873dee, #002aff) !important;
+    }
+    .domaintypeblock:active {
+        background: linear-gradient(to right, #873dee, #002aff);
+    }
+
+    .ipfsimg{
+        width: 60px;
+    }
+
+}

@@ -1,0 +1,9 @@
+node_modules/
+
+dvpn/node_modules/
+
+*.mp4
+*.mp4
+
+*.apk
+"dvpn/public/release/*.apk" 

@@ -1,0 +1,120 @@
+
+
+
+
+
+/* phone */
+@media (max-width: 600px){
+    .photoBack{
+        display: flex;
+        height: 330px;
+        overflow: hidden;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .backimg {
+        position: absolute;
+        top: -230px;
+        width: 100%;
+        height: 100%;
+        background-image: url("../../../assets/backgroud2.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -1 ;
+        opacity: 0.9; /* 可选：让背景图更暗一些 */
+    }
+
+    .downloadicon{
+        margin-top: 30px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .downloadDVPN{
+        width: 120px;
+        margin-left: 20%;
+    }
+
+    .downloadicon h1{
+        font-size: 29px;
+        color: white;
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+
+    .downloadicon h1::after {
+        content: "@";
+        position: absolute;
+        font-size: 6px;
+        color: white;
+    }
+    
+    .introduce{
+        font-size: 7px;
+        color: white;
+        text-align: center;
+    }
+
+    .buttons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        gap: 10px;
+    }
+    
+    .downloadD{
+        font-size: 6px;
+        padding: auto;
+        width: 35%;
+        height: 60px;
+        margin-top: 25px;
+        display: flex;
+        align-items: center;
+        color: white;
+        border-radius: 10px;
+        flex-direction: row;
+        background: linear-gradient(to right, #08BBFF, #2A76FF);
+        justify-content: space-around;
+        border: none;
+        outline: none;
+    }
+
+    .inviteD {
+        font-size: 5px;
+        padding: auto;
+        width: 35%;
+        height: 60px;
+        margin-top: 25px;
+        display: flex;
+        align-items: center;
+        color: white;
+        border-radius: 10px;
+        flex-direction: row;
+        background: linear-gradient(to right, #2A76FF, #08BBFF);
+        justify-content: space-around;
+        border: none;
+        outline: none;
+    }
+
+    .android{
+        width: 36px;
+    }
+
+    .invitepho{
+        width: 30px;
+    }
+
+}
+
+/* ipad */
+@media (min-width: 601px) and (max-width: 1024px) {
+
+}
+
+/* conmputer */
+@media (min-width: 1025px) {
+
+}

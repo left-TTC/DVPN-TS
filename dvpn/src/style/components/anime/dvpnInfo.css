@@ -1,0 +1,42 @@
+
+
+/* phone */
+@media (max-width: 600px){
+    .dvpnInfoBlock{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        z-index: 10;
+    }
+
+    .features{
+        font-size: 22px;
+        margin-top: 60px;
+        font-family:'Times New Roman', Times, serif;
+        color: grey;
+    }
+
+    .glow2 {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.5), transparent 70%);
+        filter: blur(80px);
+        top: 190%;
+        left: 10%;
+        z-index: 0;
+        opacity: 0.3;
+    }
+
+    .glow3 {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.5), transparent 70%);
+        filter: blur(80px);
+        top: 120%;
+        left: 10%;
+        z-index: 0;
+        opacity: 0.2;
+    }
+}

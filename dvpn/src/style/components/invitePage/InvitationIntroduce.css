@@ -1,0 +1,12 @@
+
+
+/* phone */
+@media (max-width: 600px){
+    .InvitationIntroduce{
+        height: 2000px;
+        background-color: #17191C;
+        /* translate: 0 0px; */
+        translate: 0 -680px;
+        box-shadow: 0 -5px 6px 3px black;
+    }
+}

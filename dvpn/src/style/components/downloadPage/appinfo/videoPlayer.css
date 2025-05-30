@@ -1,0 +1,21 @@
+
+
+@media (max-width: 600px){
+    .vediocontainer{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 40%;
+        z-index: 20;
+    }
+
+    .video{
+        width: 62%;
+        height: 123px;
+        z-index: 20;
+        background-color: #1B2838;
+        border-radius: 31px;
+        opacity: 0.8;
+    }
+}

@@ -1,0 +1,93 @@
+
+.topbar {
+    position: fixed;
+    color: white;
+    width: 100%;
+    background-color: #171D25;
+    height: 70px;
+    top: 0;
+    left: 0;
+    box-shadow: 0 6px 6px 1px black;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+}
+
+.topbar.inwechat{
+    top: 70px
+}
+
+
+.lanph{
+    width: 30px;
+}
+
+
+.iconAndName{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    align-items: center;
+}
+
+.iconAndName h1{
+    font-size: 23px;
+    padding-left: 6px;
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.iconAndName h1::after {
+    content: "@";
+    position: absolute;
+    font-size: 6px;
+    color: white;
+}
+
+/* phone */
+@media (max-width: 600px){
+    .icon{
+        width: 70px;
+        margin-left: 15%;
+    }
+
+    .lan {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* ipad */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .icon {
+        width: 60px;
+        margin-left: 14%;
+    }
+    .lan {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* conmputer */
+@media (min-width: 1025px) {
+    .icon {
+        width: 80px;
+        margin-left: 31%;
+    }
+    .lan {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        margin-left: 4%;
+    }
+}
+
+
+
+
+

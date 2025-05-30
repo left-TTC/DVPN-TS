@@ -1,0 +1,86 @@
+
+
+
+
+
+/* phone */
+@media (max-width: 600px){
+    .appinfo {
+        background-color: #17191C;
+        height: auto;
+        padding-top: 30px;
+        padding-bottom: 150px;
+        width: 100%;
+        z-index: 10;
+        box-shadow: 0 3px 10px 5px black;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .glow1 {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.5), transparent 70%);
+        filter: blur(80px);
+        top: 60%;
+        left: 30%;
+        z-index: 0;
+        opacity: 0.9;
+    }
+
+    .glow4 {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.5), transparent 70%);
+        filter: blur(80px);
+        top: 220%;
+        left: 30%;
+        z-index: 0;
+        opacity: 0.5;
+    }
+
+    .understandindDVPN {
+        font-size: 22px;
+        margin-top: 60px;
+        font-family:'Times New Roman', Times, serif;
+        color: grey;
+    }
+
+    .vedioPlayer{
+        z-index: 10;
+        position: relative;
+        height: 400px;
+        display: flex;
+        width: 100%;
+        
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .robot{
+        width: 925px;
+        z-index: 15;
+        position: absolute;
+        margin-left: 34%;
+    }
+
+    .linecontainer{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .robotline{
+        height: 1px;
+        width: 80%;
+        background-color: white;
+        position: relative;
+        filter: blur(2px);
+        box-shadow: 0 0px 4px 4px white;
+    }
+
+    
+}

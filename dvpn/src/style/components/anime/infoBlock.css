@@ -1,0 +1,111 @@
+
+
+
+/* phone */
+@media (max-width: 600px){
+    .smallinfoblock{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        z-index: 20;
+        height: 320px;
+    }
+
+    .infoBlockContentBlock{
+        height: 55px;
+        padding: 10px;
+        display: flex;
+        width: 70%;
+        border: none;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 1px;
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.2),
+            rgba(255, 255, 255, 0.05)
+        );
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(10px);
+        opacity: 0;
+        border-left: 4px solid rgba(255, 255, 255, 0.18);
+        border-right: 3px solid rgba(255, 255, 255, 0.18);
+        border-bottom: 3px solid rgba(255, 255, 255, 0.18);
+        border-top: none;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+        transition: none;
+    }
+
+    .infoBlockContentBlock h1 {
+        font-size: 23px;
+        font-style: italic;
+        font-weight: 1000;
+        color: rgb(188, 186, 186);
+        font-family:'Courier New', Courier, monospace;
+    }
+
+    .infoBlockContentBlockimg{
+        width: 25px;
+    }
+
+    .leftdir{
+        margin-left: -3%;
+    }   
+    
+    .rightdir{
+        margin-left: 26%;
+    }
+
+    .infoblocktextblock{
+        height: 200px;
+        padding: 10px;
+        width: 70%;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1px;
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.2),
+            rgba(255, 255, 255, 0.05)
+        );
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(10px);
+        opacity: 0;
+        border-left: 4px solid rgba(255, 255, 255, 0.18);
+        border-right: 3px solid rgba(255, 255, 255, 0.18);
+        border-bottom: 3px solid rgba(255, 255, 255, 0.18);
+        position: relative;
+        top: -5%;
+        overflow: hidden;
+    }
+
+    .infoblocktextbox{
+        opacity: 0;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .lefttext{
+        text-align: left;
+    }
+
+    .righttext{
+        text-align: left;
+    }
+
+    .textboxContents{
+        color: white;
+        margin-top: -8px;
+        font-size: 20px;
+        font-family:'Courier New', Courier, monospace;
+        padding: 0%;
+    }
+}
+
+
+
