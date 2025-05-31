@@ -1,0 +1,13 @@
+
+
+.HowToInviteEffectively{
+    display: flex;
+    flex-direction: column;
+    height: 1000px;
+    margin-top: 40px;
+}
+
+.HowToInviteEffectively h1{
+    color: white;
+    font-size: 23px;
+}

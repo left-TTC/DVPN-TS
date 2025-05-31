@@ -3,6 +3,11 @@ import { useEffect, useRef } from "react";
 import { useInviteContext } from "../../pages/invite";
 import "../../style/components/invitePage/InvitationIntroduce.css"
 import { animate } from "animejs";
+import { useTranslation } from "react-i18next";
+
+import "../../style/components/invitePage/InvitationIntroduce.css"
+import Whyinviteorthers, { imgPaths, type whyinviteorthersContext } from "./invitationIntroduce/whyInviteTemplate";
+import HowToInviteEffectively from "./invitationIntroduce/howToInvite";
 
 export interface IntroduceProps{
     setDown: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,6 +16,7 @@ export interface IntroduceProps{
 const InvitationIntroduce: React.FC<IntroduceProps> = ({setDown}) => {
     const {ifShowQRCode} = useInviteContext()
     const downRef = useRef<HTMLDivElement | null>(null)
+    const {t} = useTranslation()
 
     useEffect(() => {
         if(ifShowQRCode){
@@ -26,9 +32,23 @@ const InvitationIntroduce: React.FC<IntroduceProps> = ({setDown}) => {
         }
     }, [ifShowQRCode])
 
+    const contentNode: whyinviteorthersContext = {
+        text: t("getNodeContext"),
+        title: t("getNode"),
+        summarize: t("getNodesum")
+    }
+    const contentFwc: whyinviteorthersContext = {
+        text: t("DVPNCryptocurrency"),
+        title: t("GetCryptocurrency"),
+        summarize: t("cryptocurrencysum")
+    }
+
     return(
         <div className="InvitationIntroduce" ref={downRef}>
-            
+            <h1>{t("whyinviteorthers")}</h1>
+            <Whyinviteorthers imgPath={imgPaths.P2P} content={contentNode} />
+            <Whyinviteorthers imgPath={imgPaths.FWC} content={contentFwc} />
+            <HowToInviteEffectively />
         </div>
     )
 }

@@ -3,10 +3,22 @@
 /* phone */
 @media (max-width: 600px){
     .InvitationIntroduce{
-        height: 2000px;
-        background-color: #17191C;
+        height: auto;
+        background-color: #14171B;
         /* translate: 0 0px; */
         translate: 0 -680px;
-        box-shadow: 0 -5px 6px 3px black;
+        box-shadow: 0 1px 6px 5px black;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 200px;
+    }
+
+    .InvitationIntroduce h1{
+        color: white;
+        font-size: 27px;
+        margin-top: 30px;
+        font-weight: 300;
+        font-family: 'Courier New', Courier, monospace;
     }
 }

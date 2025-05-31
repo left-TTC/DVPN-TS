@@ -11,8 +11,6 @@ import "swiper/css/pagination";
 
 import "../../../style/components/invitePage/QRcodeGenerator/QRcodeGenerator.css";
 
-import ipfs from "../../../assets/ipfs.svg"
-import domain from "../../../assets/domain.svg"
 
 export interface QRcodeGeneratorProps {
     ifdrawing: boolean
@@ -50,12 +48,6 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawing
         }
     }, [ifdrawing]);
 
-    const ifIpfs = (url: string) => {
-        if(url.includes("ipfs") || url.includes("ipns")){
-            return true
-        }
-        return false
-    }
 
     const handleSaveQRCode = (index: number) => {
         const canvas = canvasRefs.current[index];
@@ -71,6 +63,36 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawing
         document.body.removeChild(link);
     };
 
+    const returnEmoji = () => {
+        const randomInt = Math.floor(Math.random() * 11);
+        switch(randomInt){
+            case 0:
+                return "🥰"
+            case 1:
+                return "😘"
+            case 2:
+                return "😋"
+            case 3:
+                return "🤩"
+            case 4:
+                return "🐱"
+            case 5:
+                return "🌞"
+            case 6:
+                return "🐼"
+            case 7:
+                return "👻"
+            case 8:
+                return "🤗"
+            case 9:
+                return "🥳"
+            default:
+                return "🎃"
+        }
+    }
+
+    const shouldLoop = originalContext.length > 2;
+
     return (
         <div className="QRcodeGenerator">
             <h1>{t("QRcode")}</h1>
@@ -84,19 +106,18 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawing
                     spaceBetween={20}
                     slidesPerView={1.2}
                     pagination={{ clickable: true }}
-                    loop={true}
+                    loop={shouldLoop}
                     centeredSlides={true}
-                    style={{ paddingBottom: "70px" }}
+                    style={{ paddingBottom: "40px" }}
                 >
                     {originalContext.map((url, index) => (
                         <SwiperSlide key={`${url.text}-${index}`}>
                             <div className="QROne">
                                 <button className="domaintypeblock"  onClick={() => handleSaveQRCode(index)}>
-                                    {ifIpfs(url.label)? (
-                                        <img src={ipfs} className="ipfsimg"/>
-                                    ):(
-                                        <img src={domain} className="ipfsimg"/>
-                                    )}
+                                    <div className="QRcodescreenshotintroduce">
+                                        <h1>{t("scanitandownloadapp")}</h1>
+                                    </div>
+                                    <h1>{returnEmoji()}</h1>
                                 </button>
                                 <p>service {index + 1}</p>
                                 <QRCodeCanvas
@@ -110,6 +131,8 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawing
                         </SwiperSlide>
                     ))}
                 </Swiper>
+                <h1>{t("experiencebetter")}</h1>
+                <h2>{t("makeyoubetternetwork")}</h2>
             </div>
         </div>
     );

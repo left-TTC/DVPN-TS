@@ -62,14 +62,15 @@
 
     .domaintypeblock{
         -webkit-tap-highlight-color: transparent;
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
+        width: 80%;
+        height: 60px;
+        border-radius: 20px;
         display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         background: linear-gradient(to right, #08BBFF, #2A76FF);
-        top: 10px;
+        top: 30px;
         position: absolute;
         border: none;
     }
@@ -79,9 +80,24 @@
     .domaintypeblock:active {
         background: linear-gradient(to right, #873dee, #002aff);
     }
+    .QRcodescreenshotintroduce{
+        display: flex;
+        flex-direction: column;
+    }
 
-    .ipfsimg{
-        width: 60px;
+    .QRcodescreenshotintroduce h1{
+        font-size: 15px;
+        font-weight: 400!important;
+    }
+
+    .QRContainer h1{
+        font-size: 16px;
+        font-weight: 200;
+    }
+
+    .QRContainer h2{
+        font-size: 16px;
+        font-weight: 200;
     }
 
 }
