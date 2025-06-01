@@ -11,7 +11,9 @@
         display: flex;
         flex-direction: column;
         text-align: center;
-        padding-bottom: 200px;
+        padding-bottom: 50px;
+        position: absolute;
+        width: 100%;
     }
 
     .InvitationIntroduce h1{

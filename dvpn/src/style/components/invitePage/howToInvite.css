@@ -1,13 +1,65 @@
 
 
-.HowToInviteEffectively{
-    display: flex;
-    flex-direction: column;
-    height: 1000px;
-    margin-top: 40px;
-}
+@media (max-width: 600px){
+    .HowToInviteEffectively{
+        display: flex;
+        flex-direction: column;
+        height: 500px;
+        margin-top: 40px;
+        opacity: 0;
+        translate: 0 60px;
+        padding-bottom: 100px;
+    }
 
-.HowToInviteEffectively h1{
-    color: white;
-    font-size: 23px;
+    .HowToInviteEffectively h1{
+        color: white;
+        font-size: 23px;
+    }
+
+    .inviteWayContainer{
+        width: 390px;
+        border-radius: 20px;
+        height: auto;
+        /* background-color: rebeccapurple; */
+    }
+
+    .whyinviteItem{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #292929;
+        border-radius: 40px;
+        margin-top: 60px;
+        height: 230px;
+        padding: 20px 20px 5px 20px;
+    }
+
+    .whyinviteitemimg{
+        background: linear-gradient(to right, #08BBFF, #2A76FF);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 15px;
+    }
+
+    .slideImage{
+        width: 50px;
+    }
+
+    .slideTitle{
+        margin-top: 20px;
+        font-size: 23px;
+        color: white;
+        font-weight: 330;
+    }
+
+    .siideText{
+        margin-top: -20px;
+        color: white;
+        font-weight: 280;
+    }
 }

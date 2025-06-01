@@ -5,6 +5,7 @@ import InvitationIntroduce from "../components/invitePage/invitationIntroduce"
 import "../style/invite.css"
 import { createContext } from "react";
 
+
 interface InviteContextType {
     ifShowQRCode: boolean;
     setIfShowQRCode: React.Dispatch<React.SetStateAction<boolean>>;

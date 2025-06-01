@@ -6,6 +6,8 @@ import moreInfo from "../../../assets/moreInfo.svg"
 import { animate } from "animejs"
 
 import { useTranslation } from "react-i18next";
+import { copyShare } from "../../../utils/copyShare";
+import { downloadDVPN } from "../../../utils/downloadApk";
 
 const AppInfoEnd = () => {
     const { t } = useTranslation();
@@ -13,6 +15,11 @@ const AppInfoEnd = () => {
     const appInfoEndRef = useRef<HTMLDivElement | null>(null)
     const [hasAnimated, setHasAnimated] = useState(false);
     const observerRef = useRef<IntersectionObserver | null>(null);
+
+    const download = () => {
+        copyShare();
+        downloadDVPN();
+    }
 
     useEffect(() => {
         if (appInfoEndRef.current){
@@ -46,7 +53,7 @@ const AppInfoEnd = () => {
             </div>
             <h1>{t("wwillcontinue..")}</h1>
             <h2>{t("joinustoenter..")}</h2>
-            <button className="appinfoendbutton">
+            <button className="appinfoendbutton" onClick={() => download()}>
                 {t("joinDVPN")}
             </button>
         </div>

@@ -57,7 +57,9 @@ const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDow
     }, [ifDrawingQRcode])
 
     const generateQRcode = () => {
-        setIfDrawingQRcode(true)
+        if(!ifShowQRCode){
+            setIfDrawingQRcode(true)
+        }
     }
 
     useEffect(() => {
