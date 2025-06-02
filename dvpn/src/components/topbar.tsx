@@ -7,10 +7,14 @@ import { useWeChatContext } from "../context/wechatProvider"
 import { useEffect, useState } from "react"
 import i18n from '../i18n';
 import { useTranslation } from "react-i18next"
+import { useLocation } from "react-router-dom"
 
 
 export default function Topbar() {
     const {t} = useTranslation()
+
+    const location = useLocation()
+    const shouldShowWechatSkip = location.pathname === '/';
 
     const isWechat = useWeChatContext()
     const [ifShowLanguageChange, setIfShowLanguageChange] = useState(false)
@@ -31,7 +35,7 @@ export default function Topbar() {
     }
 
     return(
-       <div className={isWechat? "topbar inwechat" : "topbar"}>
+       <div className={(isWechat && shouldShowWechatSkip)? "topbar inwechat" : "topbar"}>
             <div className="lan" onClick={() =>setIfShowLanguageChange(!ifShowLanguageChange)}>
                 <img src={change}  className="lanph"/>
             </div>
