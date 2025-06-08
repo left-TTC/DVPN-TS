@@ -8,12 +8,14 @@ import play from "../../../assets/play.svg"
 interface VedioProps {
     ifLoadideo: boolean,
     setLoad: (ifLoad: boolean) => void,
+    playVideo: () => void,
+    pause: () => void,
+    getPlayingState: () => boolean,
 }
 
-const StartVedio: React.FC<VedioProps> = ({ ifLoadideo, setLoad }) => {
+const StartVedio: React.FC<VedioProps> = ({ ifLoadideo, setLoad, playVideo, pause, getPlayingState }) => {
     const startRef = useRef<HTMLButtonElement | null>(null);
     const intervalRef = useRef<number | null>(null);
-    console.log(ifLoadideo)
 
     useEffect(() => {
         if (!startRef.current) return;
@@ -60,12 +62,20 @@ const StartVedio: React.FC<VedioProps> = ({ ifLoadideo, setLoad }) => {
         };
     }, []);
 
-    const loadVedio = () => {
-        setLoad(true);        
-    };
+    const hadleButton = () => {
+        if(!ifLoadideo){
+            setLoad(true)
+        }else{
+            if(!getPlayingState()){
+                playVideo()
+            }else{
+                pause()
+            }
+        }
+    }
 
     return (
-        <button onClick={loadVedio} className="load loadbutton" ref={startRef}>
+        <button onClick={hadleButton} className="load loadbutton" ref={startRef}>
             <img src={play} className="playvedio"/>
         </button>
     );

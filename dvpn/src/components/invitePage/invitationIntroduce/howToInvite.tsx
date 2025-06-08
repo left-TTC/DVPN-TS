@@ -8,6 +8,7 @@ import wechat from "../../../assets/wechat-fill.svg"
 import twwiter from "../../../assets/twitter.svg"
 import youtube from "../../../assets/Youtube-fill.svg"
 import orthers from "../../../assets/orthers.svg"
+import telegram from "../../../assets/telegram.svg"
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -81,6 +82,11 @@ const HowToInviteEffectively = () => {
         img: orthers,
         title: t("orthers"),
         way: t("orthersway"),
+    }
+    content[5] = {
+        img: telegram,
+        title: t("telegram"),
+        way: t("teleway")
     }
 
     return(

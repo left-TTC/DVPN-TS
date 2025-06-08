@@ -39,4 +39,40 @@
         z-index: 0;
         opacity: 0.2;
     }
+
+    .glow4 {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.5), transparent 70%);
+        filter: blur(80px);
+        top: 160%;
+        left: 40%;
+        z-index: 0;
+        opacity: 0.3;
+    }
+
+    .glow5 {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.5), transparent 70%);
+        filter: blur(80px);
+        top: 215%;
+        left: 10%;
+        z-index: 0;
+        opacity: 0.4;
+    }
+
+    .glow5 {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(0, 255, 255, 0.5), transparent 70%);
+        filter: blur(80px);
+        top: 260%;
+        left: 0%;
+        z-index: 0;
+        opacity: 0.5;
+    }
 }

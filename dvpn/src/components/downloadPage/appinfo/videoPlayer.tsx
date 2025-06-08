@@ -1,54 +1,77 @@
-
-
-import { useRef} from "react"
-import cartoon from "../../../assets/DVPN.mp4"
-import "../../../style/components/downloadPage/appinfo/videoPlayer.css"
-
+import { useRef, useImperativeHandle, forwardRef } from "react";
+import cartoon from "../../../assets/DVPN.mp4";
+import "../../../style/components/downloadPage/appinfo/videoPlayer.css";
 
 // const OKCACHE: number = 40;
 // const COULDPLAYATIME: number = 3;
 
-const VideoPlayer = () => {
-    const videoRef = useRef<HTMLVideoElement | null>(null)
-    // const [canPlay, setCanPlay] = useState(false)
+export type VideoPlayerHandle = {
+    play: () => Promise<void>;
+    pause: () => void;
+    getIsPlaying: () => boolean;
+    enterFullscreen: () => void;
+    setVolume: (volume: number) => void;
+    getVolume: () => number | undefined;
+};
 
-    // const listenCacheProgress = () =>{
-    //     const video = videoRef.current;
-    //     if (!video || video.buffered.length === 0) return;
+const VideoPlayer = forwardRef<VideoPlayerHandle, {}>((_, ref) => {
+    const videoRef = useRef<HTMLVideoElement | null>(null);
 
-    //     const bufferedEnd = video.buffered.end(0); 
-    //     const duration = video.duration || 1; 
-    //     const progress = (bufferedEnd / duration) * 100;
+    useImperativeHandle(ref, () => ({
+        play: () => {
+            if (videoRef.current) {
+                return videoRef.current.play();
+            } else {
+                return Promise.resolve();
+            }
+        },
+        pause: () => {
+            videoRef.current?.pause();
+        },
+        getCurrentTime: () => {
+            return videoRef.current?.currentTime;
+        },
+        getElement: () => {
+            return videoRef.current;
+        },
+        getIsPlaying: () => {
+            return !!videoRef.current! && !videoRef.current!.paused && !videoRef.current!.ended && videoRef.current!.readyState > 2;
+        },
+        enterFullscreen: () => {
+            const video = videoRef.current;
+            if (video) {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if ((video as any).webkitRequestFullscreen) {
+                    (video as any).webkitRequestFullscreen(); // Safari
+                } else if ((video as any).mozRequestFullScreen) {
+                    (video as any).mozRequestFullScreen(); // Firefox
+                } else if ((video as any).msRequestFullscreen) {
+                    (video as any).msRequestFullscreen(); // IE/Edge
+                }
+            }
+        },
+        setVolume: (volume: number) => {
+            if (videoRef.current) {
+                videoRef.current.volume = Math.min(1, Math.max(0, volume));
+            }
+        },
+        getVolume: () => {
+            return videoRef.current?.volume;
+        }
+    }));
 
-    //     console.log("progress:", progress)
-
-    //     if (progress >= OKCACHE || video.readyState >= COULDPLAYATIME) {
-    //         setCanPlay(true);
-    //         video.removeEventListener("progress", listenCacheProgress);
-    //      }
-    // }
-
-    // useEffect(() => {
-    //     if(videoRef.current){
-    //         videoRef.current.load();
-    //         console.log("start listning")
-    //     }
-    // }, [videoRef])
-
-    // useEffect(() => {
-    //     return () => {
-    //     if (videoRef.current) {
-    //         videoRef.current.removeEventListener("progress", listenCacheProgress);
-    //     }
-    //     };
-    // }, [])
+    return (
+        <div className="vediocontainer">
+            <video
+                ref={videoRef}
+                src={cartoon}
+                preload="auto"
+                className="video"
+            />
+        </div>
+    );
+});
 
 
-    return(
-        <div className="vediocontainer" > 
-            <video ref={videoRef} src={cartoon} controls  preload="" className="video"/>
-        </div> 
-    )
-}
-
-export default VideoPlayer
+export default VideoPlayer;

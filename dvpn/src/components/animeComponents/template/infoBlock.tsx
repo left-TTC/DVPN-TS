@@ -4,6 +4,11 @@ import React, { useEffect, useRef } from "react";
 import "../../../style/components/anime/infoBlock.css"
 import { animate } from "animejs";
 
+import freenode from "../../../assets/freecode.png"
+import safty from "../../../assets/safe.png"
+import stable from "../../../assets/stable.png"
+import solana from "../../../assets/solana.png"
+
 export enum Direction{
     Left,
     Right,   
@@ -13,9 +18,17 @@ export interface infoBlockProps{
     direction: Direction,
     title: string,
     text: string[],
+    photo: Photo,
 }
 
-const InfoBlock: React.FC<infoBlockProps> = ({direction, text, title}) => {
+export enum Photo{
+    FreeNode,
+    Safety,
+    Stable,
+    Solana,
+}
+
+const InfoBlock: React.FC<infoBlockProps> = ({direction, text, title, photo}) => {
 
     const infoBlockRef = useRef<HTMLDivElement | null>(null)
     const infoBlockTextRef = useRef<HTMLDivElement | null>(null)
@@ -25,6 +38,26 @@ const InfoBlock: React.FC<infoBlockProps> = ({direction, text, title}) => {
     const textRef = useRef<HTMLUListElement | null>(null)
 
     const ifLeft = direction === Direction.Left
+
+    let usePhoto: string = "";
+    let photoStyle: string = ""
+    switch(photo){
+        case Photo.FreeNode: 
+            usePhoto = freenode
+            photoStyle = "freenode"
+            break
+        case Photo.Safety:
+            usePhoto = safty
+            photoStyle = "safty"
+            break
+        case Photo.Stable:
+            usePhoto = stable,
+            photoStyle = "stable"
+            break
+        case Photo.Solana:
+            usePhoto = solana,
+            photoStyle = "solana"
+    }
 
     const showTextBlock = () => {
         if(infoBlockTextRef.current){
@@ -99,6 +132,7 @@ const InfoBlock: React.FC<infoBlockProps> = ({direction, text, title}) => {
                         <li className="textboxContents" key={index}>{line}</li>
                     ))}
                 </ul>
+                <img src={usePhoto} className={`infoblocktextboximg ${photoStyle}`}/>
             </div>
         </div>
     )

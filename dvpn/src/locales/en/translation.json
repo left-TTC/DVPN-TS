@@ -36,7 +36,7 @@
     "takescreenshotor": "Take a screenshot or click the button above to save",
     "whyinviteorthers": "Why invite others",
     "getNode": "Get available nodes",
-    "getNodeContext": "D-VPN is a new type if decentralized P2P VPN. As long as you invite other users to use D-VPN, the user you invited and other users invited by the user can become your node. This hierarchical relationship can last up to 10 levels.",
+    "getNodeContext": "D-VPN is a new type of decentralized P2P VPN. As long as you invite other users to use D-VPN, the user you invited and other users invited by the user can become your node. This hierarchical relationship can last up to 10 levels.",
     "getNodesum": "The more people you invite, the more available nodes you have.",
     "GetCryptocurrency": "Get Cryptocurrency",
     "DVPNCryptocurrency": "DVPN will issue FWC (Free World Coin). The more users you invite and the longer you use it, the more cryptocurrency you will get.",
@@ -60,5 +60,7 @@
     "spanish": "Español",
     "russian": "Русский",
     "arabic": "عربي",
-    "usedvpn": "Use D-VPN to overcome all your network obstacles"
+    "usedvpn": "Use D-VPN to overcome all your network obstacles",
+    "telegram": "telegram",
+    "teleway": "Copy your link or QR code and share it to your Telegram group"
 }

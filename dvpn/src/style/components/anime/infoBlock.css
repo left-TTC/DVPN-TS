@@ -107,6 +107,35 @@
         font-family:'Courier New', Courier, monospace;
         padding: 0%;
     }
+
+    .infoblocktextboximg{
+        position: absolute;
+    }
+
+    .freenode{
+        width: 250px;
+        left: 80px;
+        top: 40px;
+        opacity: 0.25;
+    }
+
+    .safty{
+        width: 240px;
+        opacity: 0.2;
+        left: 70px;
+    }
+
+    .stable{
+        width: 230px;
+        opacity: 0.3;
+        right: 70px;
+    }
+
+    .solana{
+        width: 230px;
+        opacity: 0.3;
+        left: 80px;
+    }
 }
 
 
