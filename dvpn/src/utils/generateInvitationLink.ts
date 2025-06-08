@@ -17,7 +17,7 @@ export class JsonD {
 // invitationcodes: fanmocheng
 // combination: http://ipfs.is/cid/?r=fanmocheng
 
-//test: http://192.168.1.36:5173/invite?j=%7B%22serve%22%3A%5B%22http%3A%2F%2F192.168.1.36%3A5173%2F%22%2C%22http%3A%2F%2Fipfs.io%2F%22%5D%2C%22inv%22%3A%22fmc%22%7D
+//test: http://192.168.10.12:5173/invite?j=%7B%22serve%22%3A%5B%22http%3A%2F%2F192.168.1.36%3A5173%2F%22%2C%22http%3A%2F%2Fipfs.io%2F%22%5D%2C%22inv%22%3A%22fmc%22%7D
 // 😚😚🎉 You're invited to try a 📦brand-new Android app🚀!
 // 😎😎 Discover content you've never 🫣seen before and experience a new way to 🌊surf the web🕸!
 // 📲😖 If the link can't open directly, please copy and paste it into your browser.

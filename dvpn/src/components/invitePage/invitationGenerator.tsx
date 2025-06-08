@@ -27,7 +27,6 @@ const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDow
 
     const generateLink = async() => {
         const copyRes = await generateInvitationLink(t("invitatinwords"))
-        console.log("copied")
 
         if(copyRes){
             setIfLinkOk(true)
@@ -81,11 +80,6 @@ const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDow
     return(
         <div className="InvitationGenerator">
             <div className="Inbackimg" />
-            
-            <div className="Indownloadicon">
-                <img src={icon} className="IndownloadDVPN"/>
-                <h1>D-VPN</h1>
-            </div>
 
             <div className="InvitationGeneratorTitle">
                 <h1>{t("inviteortheruser")}</h1>

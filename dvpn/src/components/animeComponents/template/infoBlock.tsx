@@ -75,7 +75,6 @@ const InfoBlock: React.FC<infoBlockProps> = ({direction, text, title}) => {
                                         showTextContent();
                                     }
                                 })
-
                             }
                         }, 800)
 

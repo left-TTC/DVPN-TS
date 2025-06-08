@@ -24,47 +24,23 @@
         opacity: 0.5; 
     }
 
-    .Indownloadicon{
-        margin-top: 30px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-    }
-
-    .IndownloadDVPN{
-        width: 120px;
-        margin-left: 20%;
-    }
-
-    .Indownloadicon h1{
-        font-size: 29px;
-        color: white;
-        font-family: 'Roboto Condensed', sans-serif;
-    }
-
-    .Indownloadicon h1::after {
-        content: "@";
-        position: absolute;
-        font-size: 6px;
-        color: white;
-    }
-
     .InvitationGeneratorTitle{
         display: flex;
         flex-direction: column;
         justify-content: center;
         text-align: center;
+        margin-top: 50px;
     }
 
     .InvitationGeneratorTitle h1{
         color: white;
-        font-size: 28px;
+        font-size: 26px;
         font-weight: 350;
     }
 
     .InvitationGeneratorTitle h2{
         color: white;
-        font-size: 24px;
+        font-size: 23px;
         font-weight: 200;
         margin-top: -4%;
     }
@@ -72,11 +48,11 @@
     .InvitationGeneratorTitlecopyinvitationcodes{
         display: flex ;
         flex-direction: row;
-        font-size: 7px;
+        font-size: 6px;
         width: 80%;
         justify-content: space-around;
         align-items: center;
-        margin-top: 5%;
+        margin-top: 12%;
         border-radius: 5px;
         height: 60px;
         background: linear-gradient(to right, #08BBFF, #2A76FF);
@@ -108,11 +84,11 @@
     .InvitationGeneratorTitlegenerateQRcode{
         display: flex ;
         flex-direction: row;
-        font-size: 6px;
+        font-size: 5px;
         width: 80%;
         justify-content: space-around;
         align-items: center;
-        margin-top: 6%;
+        margin-top: 8%;
         border-radius: 5px;
         height: 60px;
         background: linear-gradient(to right, #08BBFF, #2A76FF);

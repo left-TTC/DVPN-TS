@@ -100,4 +100,10 @@
         font-weight: 200;
     }
 
+    .QRContainer h3{
+        font-size: 16px;
+        font-weight: 200;
+        margin-top: -13px;
+    }
+
 }

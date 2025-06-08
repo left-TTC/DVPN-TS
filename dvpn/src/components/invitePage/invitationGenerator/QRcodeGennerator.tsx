@@ -133,6 +133,7 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawing
                 </Swiper>
                 <h1>{t("experiencebetter")}</h1>
                 <h2>{t("makeyoubetternetwork")}</h2>
+                <h3>{t("usedvpn")}</h3>
             </div>
         </div>
     );
