@@ -1,6 +1,6 @@
 import { useRef, useImperativeHandle, forwardRef } from "react";
-import cartoon from "../../../assets/DVPN.mp4";
 import "../../../style/components/downloadPage/appinfo/videoPlayer.css";
+import i18n from "../../../i18n";
 
 // const OKCACHE: number = 40;
 // const COULDPLAYATIME: number = 3;
@@ -16,6 +16,23 @@ export type VideoPlayerHandle = {
 
 const VideoPlayer = forwardRef<VideoPlayerHandle, {}>((_, ref) => {
     const videoRef = useRef<HTMLVideoElement | null>(null);
+
+    const currentLanguage = i18n.language;
+    let videoSrc = "/video/DVPN.mp4";
+
+    switch (currentLanguage) {
+        case "zh":
+        case "zh-CN":
+            videoSrc = "/video/zhdvpn.mp4";
+            break;
+        case "en":
+        case "en-GB":
+        case "en-US":
+            videoSrc = "/video/DVPN.mp4";
+            break;
+        default:
+            videoSrc = "/video/DVPN.mp4";
+    }
 
     useImperativeHandle(ref, () => ({
         play: () => {
@@ -43,11 +60,11 @@ const VideoPlayer = forwardRef<VideoPlayerHandle, {}>((_, ref) => {
                 if (video.requestFullscreen) {
                     video.requestFullscreen();
                 } else if ((video as any).webkitRequestFullscreen) {
-                    (video as any).webkitRequestFullscreen(); // Safari
+                    (video as any).webkitRequestFullscreen(); 
                 } else if ((video as any).mozRequestFullScreen) {
-                    (video as any).mozRequestFullScreen(); // Firefox
+                    (video as any).mozRequestFullScreen(); 
                 } else if ((video as any).msRequestFullscreen) {
-                    (video as any).msRequestFullscreen(); // IE/Edge
+                    (video as any).msRequestFullscreen(); 
                 }
             }
         },
@@ -65,7 +82,7 @@ const VideoPlayer = forwardRef<VideoPlayerHandle, {}>((_, ref) => {
         <div className="vediocontainer">
             <video
                 ref={videoRef}
-                src={cartoon}
+                src={videoSrc}
                 preload="auto"
                 className="video"
             />

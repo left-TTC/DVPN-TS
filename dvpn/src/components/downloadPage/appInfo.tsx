@@ -10,6 +10,7 @@ import IntroduceAppInfo from "../animeComponents/appinfo/dvpnInfo";
 import AppInfoEnd from "./appinfo/appinfoEnd";
 
 import fullScreen from "../../assets/full-screen.svg"
+import voice from "../../assets/voice_fill.svg"
 
 import { useTranslation } from "react-i18next"
 import { animate } from "animejs";
@@ -19,6 +20,8 @@ const AppInfo = () => {
 
     const videoRef = useRef<VideoPlayerHandle>(null);
     const fullScreenRef = useRef<HTMLButtonElement | null> (null);
+    const voiceRef = useRef<HTMLDivElement | null>(null);
+    
     const [volume, setVolume] = useState(0.5);
 
     const [watchVideo, setWatchVideo] = useState(false)
@@ -46,10 +49,15 @@ const AppInfo = () => {
 
     useEffect(() => {
         const full = fullScreenRef.current
-        if(full && watchVideo){
+        const voice = voiceRef.current
+        if(full && watchVideo && voice){
             setTimeout(() => {
                 animate(full, {
                     opacity: [0, 0.8],
+                    duration: 600
+                })
+                animate(voice, {
+                    opacity: [0, 1],
                     duration: 600
                 })
             }, 700)
@@ -81,7 +89,8 @@ const AppInfo = () => {
                     </button>
                 }
                 {watchVideo &&
-                    <div className="volume-control">
+                    <div className="volume-control" ref={voiceRef}>
+                        <img src={voice} className="voiceIcon"/>
                         <input
                             type="range"
                             min="0"
