@@ -1,16 +1,16 @@
 
-import "../../style/components/downloadPage/appInfo.css"
+import "@/style/components/downloadPage/appInfo.css"
 
-import robot from "../../assets/robot.png"
-import BlinkingEyes from "../animeComponents/appinfo/blinkEyes";
+import robot from "@/assets/robot.png"
+import BlinkingEyes from "@/components/animeComponents/appinfo/blinkEyes";
 import { useEffect, useRef, useState } from "react";
-import StartVedio from "../animeComponents/appinfo/startVedio";
+import StartVedio from "@/components/animeComponents/appinfo/startVedio";
 import VedioPlayer, { type VideoPlayerHandle } from "./appinfo/videoPlayer";
-import IntroduceAppInfo from "../animeComponents/appinfo/dvpnInfo";
-import AppInfoEnd from "./appinfo/appinfoEnd";
+import IntroduceAppInfo from "@/components/animeComponents/appinfo/dvpnInfo";
+import AppInfoEnd from "@/components/downloadPage/appinfo/appinfoEnd";
 
-import fullScreen from "../../assets/full-screen.svg"
-import voice from "../../assets/voice_fill.svg"
+import fullScreen from "@/assets/full-screen.svg"
+import voice from "@/assets/voice_fill.svg"
 
 import { useTranslation } from "react-i18next"
 import { animate } from "animejs";

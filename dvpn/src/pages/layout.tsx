@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Topbar from "../components/topbar";
-import WechatSkip from "../components/wechatSkip";
+import Topbar from "@/components/topbar";
+import WechatSkip from "@/components/wechatSkip";
 
 
 export default function Layout() {

@@ -2,13 +2,13 @@
 
 import "swiper/css";
 import "swiper/css/pagination";
-import "../../../style/components/invitePage/howToInvite.css"
-import facebook from "../../../assets/facebook-fill.svg"
-import wechat from "../../../assets/wechat-fill.svg"
-import twwiter from "../../../assets/twitter.svg"
-import youtube from "../../../assets/Youtube-fill.svg"
-import orthers from "../../../assets/orthers.svg"
-import telegram from "../../../assets/telegram.svg"
+import "@/style/components/invitePage/howToInvite.css"
+import facebook from "@/assets/facebook-fill.svg"
+import wechat from "@/assets/wechat-fill.svg"
+import twwiter from "@/assets/twitter.svg"
+import youtube from "@/assets/Youtube-fill.svg"
+import orthers from "@/assets/orthers.svg"
+import telegram from "@/assets/telegram.svg"
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";

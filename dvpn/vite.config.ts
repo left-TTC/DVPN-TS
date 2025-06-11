@@ -1,28 +1,33 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 
-// 自定义插件：为 .apk 文件设置正确的 MIME 类型
 function apkMimeTypePlugin() {
-  return {
-    name: 'set-apk-mime-type',
-    configureServer(server: any) {
-      server.middlewares.use((req: any, res: any, next: any) => {
-        if (req.url?.endsWith('.apk')) {
-          res.setHeader('Content-Type', 'application/vnd.android.package-archive');
-        }
-        next();
-      });
-    }
-  };
+	return {
+		name: 'set-apk-mime-type',
+		configureServer(server: any) {
+		server.middlewares.use((req: any, res: any, next: any) => {
+			if (req.url?.endsWith('.apk')) {
+			res.setHeader('Content-Type', 'application/vnd.android.package-archive');
+			}
+			next();
+		});
+		}
+	};
 }
 
 export default defineConfig({
-  base: '/dvpn/dist/', // ✅ 设置部署子路径
-  plugins: [
-    react(),
-    apkMimeTypePlugin()
-  ],
-  build: {
-    outDir: 'dist',
-  }
+	plugins: [
+		react(),
+		apkMimeTypePlugin()
+	],
+	resolve: {
+		alias: {
+		'@': path.resolve(__dirname, 'src'),
+		},
+	},
+	build: {
+		outDir: 'dist',
+	},
+	base: './',
 });

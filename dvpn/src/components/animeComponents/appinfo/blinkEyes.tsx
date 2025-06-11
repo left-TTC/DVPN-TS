@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { animate } from 'animejs';
-import "../../../style/components/anime/blinkEyes.css";
+import "@/style/components/anime/blinkEyes.css";
 
 interface Props {
     ifLoadVedio: boolean;

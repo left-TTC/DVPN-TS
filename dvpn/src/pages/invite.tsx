@@ -1,8 +1,8 @@
 
 import { useContext, useState } from "react"
-import InvitationGenerator from "../components/invitePage/invitationGenerator"
-import InvitationIntroduce from "../components/invitePage/invitationIntroduce"
-import "../style/invite.css"
+import InvitationGenerator from "@/components/invitePage/invitationGenerator"
+import InvitationIntroduce from "@/components/invitePage/invitationIntroduce"
+import "@/style/invite.css"
 import { createContext } from "react";
 
 

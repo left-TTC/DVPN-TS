@@ -17,9 +17,9 @@ export enum imgPaths{
 }
 
 import { useEffect, useRef, useState } from "react"
-import p2p from "../../../assets/p2p.png"
-import fwc from "../../../assets/fwc.png"
-import "../../../style/components/invitePage/inviteTemplate/whyInviteTemplate.css"
+import p2p from "@/assets/p2p.png"
+import fwc from "@/assets/fwc.png"
+import "@/style/components/invitePage/inviteTemplate/whyInviteTemplate.css"
 import { animate } from "animejs"
 
 const Whyinviteorthers: React.FC<WhyInviteOrthersProps> = ({imgPath, content}) => {

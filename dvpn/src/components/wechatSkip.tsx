@@ -1,8 +1,8 @@
 
 
-import "../style/components/wechatSkip.css"
+import "@/style/components/wechatSkip.css"
 
-import array from "../assets/array.svg"
+import array from "@/assets/array.svg"
 import { useTranslation } from "react-i18next";
 
 const WechatSkip = () =>{

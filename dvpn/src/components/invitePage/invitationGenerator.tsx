@@ -2,16 +2,16 @@
 
 import { useTranslation } from "react-i18next"
 
-import "../../style/components/invitePage/invitationGenerator.css"
+import "@/style/components/invitePage/invitationGenerator.css"
 
-import link from "../../assets/link.svg"
-import QR from "../../assets/QR.svg"
-import OK from "../../assets/ok.svg"
-import loading from "../../assets/loading.svg"
+import link from "@/assets/link.svg"
+import QR from "@/assets/QR.svg"
+import OK from "@/assets/ok.svg"
+import loading from "@/assets/loading.svg"
 import { useEffect, useRef, useState } from "react"
-import { generateInvitationLink } from "../../utils/generateInvitationLink"
-import QRcodeGenerator from "./invitationGenerator/QRcodeGennerator"
-import { useInviteContext } from "../../pages/invite"
+import { generateInvitationLink } from "@/utils/generateInvitationLink"
+import QRcodeGenerator from "@/components/invitePage/invitationGenerator/QRcodeGennerator"
+import { useInviteContext } from "@/pages/invite"
 import { animate } from "animejs"
 
 export interface InvitationGeneratorProps{

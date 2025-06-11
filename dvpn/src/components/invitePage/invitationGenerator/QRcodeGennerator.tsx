@@ -1,7 +1,7 @@
 import React, { useEffect, useRef} from "react";
-import { useInviteContext } from "../../../pages/invite";
+import { useInviteContext } from "@/pages/invite";
 import { useTranslation } from "react-i18next";
-import { generateQRCodeTextAndLabel } from "../../../utils/generateQRCode";
+import { generateQRCodeTextAndLabel } from "@/utils/generateQRCode";
 import { QRCodeCanvas } from "qrcode.react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,7 +9,7 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import "../../../style/components/invitePage/QRcodeGenerator/QRcodeGenerator.css";
+    import "@/style/components/invitePage/QRcodeGenerator/QRcodeGenerator.css";
 
 
 export interface QRcodeGeneratorProps {

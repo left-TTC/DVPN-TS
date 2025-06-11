@@ -1,6 +1,4 @@
-import { getQueryVariable } from "./getQueryVariable";
-
-
+import { getQueryVariable } from "@/utils/getQueryVariable";
 
 
 export function copyShare() {

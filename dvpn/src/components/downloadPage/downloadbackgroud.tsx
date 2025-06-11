@@ -1,11 +1,11 @@
 
-import "../../style/components/downloadPage/downloadBackgroud.css"
-import icon from "../../assets/dvpn.png"
-import android from "../../assets/android.svg"
-import invite from "../../assets/copy.svg"
-import { copyShare } from "../../utils/copyShare"
+import "@/style/components/downloadPage/downloadBackgroud.css"
+import icon from "@/assets/dvpn.png"
+import android from "@/assets/android.svg"
+import invite from "@/assets/copy.svg"
+import { copyShare } from "@/utils/copyShare"
 import { useTranslation } from "react-i18next"
-import { downloadDVPN } from "../../utils/downloadApk"
+import { downloadDVPN } from "@/utils/downloadApk"
 
 const DownloadBackground = () => {
     const { t } = useTranslation();

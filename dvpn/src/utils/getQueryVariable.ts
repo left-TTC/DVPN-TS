@@ -1,10 +1,12 @@
 
 
 
-// url -- 
+// url --                        
 export function getQueryVariable(variable: string): string | false {
-    var query = window.location.search.substring(1);
-    var vars = query.split("&");
+    
+    var query = window.location.toString()
+    const parts = query.split('?');
+    var vars = parts[1].split("&");
 
     for (var i = 0; i < vars.length; i++) {
         var pair = vars[i].split("=");

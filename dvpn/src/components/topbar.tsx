@@ -1,11 +1,11 @@
 
-import "../style/components/topbar.css"
+import "@/style/components/topbar.css"
 
-import change from "../assets/lan.svg"
-import icon from "../assets/dvpn.png"
-import { useWeChatContext } from "../context/wechatProvider"
+import change from "@/assets/lan.svg"
+import icon from "@/assets/dvpn.png"
+import { useWeChatContext } from "@/context/wechatProvider"
 import { useEffect, useState } from "react"
-import i18n from '../i18n';
+import i18n from '@/i18n';
 import { useTranslation } from "react-i18next"
 import { useLocation } from "react-router-dom"
 

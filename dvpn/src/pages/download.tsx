@@ -1,9 +1,9 @@
 
 
-import AppInfo from "../components/downloadPage/appInfo"
-import DownloadBackground from "../components/downloadPage/downloadbackgroud"
-import { useWeChatContext } from "../context/wechatProvider";
-import "../style/download.css"
+import AppInfo from "@/components/downloadPage/appInfo"
+import DownloadBackground from "@/components/downloadPage/downloadbackgroud"
+import { useWeChatContext } from "@/context/wechatProvider";
+import "@/style/download.css"
 
 export default function DownloadPage(){
 

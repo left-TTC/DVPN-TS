@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react"
-import "../../../style/components/anime/startVedio.css"
+import "@/style/components/anime/startVedio.css"
 import { animate } from "animejs"
 
 
-import play from "../../../assets/play.svg"
+import play from "@/assets/play.svg"
 
 interface VedioProps {
     ifLoadideo: boolean,

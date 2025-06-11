@@ -1,13 +1,13 @@
 
 import { useEffect, useRef } from "react";
 import { useInviteContext } from "../../pages/invite";
-import "../../style/components/invitePage/InvitationIntroduce.css"
+import "@/style/components/invitePage/InvitationIntroduce.css"
 import { animate } from "animejs";
 import { useTranslation } from "react-i18next";
 
-import "../../style/components/invitePage/InvitationIntroduce.css"
+import "@/style/components/invitePage/InvitationIntroduce.css"
 import Whyinviteorthers, { imgPaths, type whyinviteorthersContext } from "./invitationIntroduce/whyInviteTemplate";
-import HowToInviteEffectively from "./invitationIntroduce/howToInvite";
+import HowToInviteEffectively from "@/components/invitePage/invitationIntroduce/howToInvite";
 
 export interface IntroduceProps{
     setDown: React.Dispatch<React.SetStateAction<boolean>>;

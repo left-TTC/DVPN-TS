@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import type { ReactNode } from 'react';
-import { isWeChat } from "../utils/isWechat";
+import { isWeChat } from "@/utils/isWechat";
 
 
 

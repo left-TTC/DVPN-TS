@@ -3,18 +3,19 @@
 
 
 export function generateInvitation(QRcanvas: HTMLCanvasElement | null) {
-    if(QRcanvas){
-        const width = 1080
-        const height = 1920
+    if(!QRcanvas)return
 
-        const customCanvas = document.createElement("canvas")
-        customCanvas.width = width;
-        customCanvas.height = height;
-        const ctx = customCanvas.getContext("2d");
-        if (!ctx) return;
+    const posterWrapper = document.createElement("div")
+    
+}
 
-        const bgImage = new Image();
-        bgImage.src = "./image/QRcodeBackg"
-        
-    }
+
+function setOverallStyle(poster: HTMLDivElement){
+    poster.style.position = "fixed"
+    poster.style.top = "-9999px"
+    poster.style.width = "1080px"
+    poster.style.height = "1920px"
+    poster.style.display = "flex"
+    poster.style.flexDirection = "column"
+    poster.style.backgroundImage = "url('./image/QRcodeBackg.png')";
 }

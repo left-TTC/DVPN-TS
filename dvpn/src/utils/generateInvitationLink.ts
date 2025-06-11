@@ -1,5 +1,5 @@
 
-import { getQueryVariable } from "./getQueryVariable";
+import { getQueryVariable } from "@/utils/getQueryVariable";
 
 export class JsonD {
     serve: string[];
@@ -23,22 +23,25 @@ export class JsonD {
 // 📲😖 If the link can't open directly, please copy and paste it into your browser.
 // 👻👻 And if one link doesn't work, try the others. 
 // 👉 http://192.168.1.36:5173/?r=fmc
-// 👉 http://ipfs.io/?r=fmc
+// 👉 https://ipfs.io/ipfs/bafybeigf5rq5s5cs4ef5kpvfexkpirijdqeb5skyfuoiuezf5odnc75c5y/#/invite?r=fmc
 
 export async function generateInvitationLink(invitationSub: string): Promise<boolean> {
     const invitationCode = getQueryVariable('j');
+    console.log("links invitationCode:", invitationCode)
     if (!invitationCode){
         return false
     };
 
     const urlParams = new JsonD(invitationCode);
+    
     const invitationCodes = urlParams.invitationCodes;
+
     let links: string = "";
     for(const serve of urlParams.serve){
         if(urlParams.serve.indexOf(serve) === 0){
-            links = invitationSub + serve + '?r=' + invitationCodes
+            links = invitationSub + serve + '#/?r=' + invitationCodes
         }else{
-            links += '\n' + '👉 ' +  serve + '?r=' +  invitationCodes
+            links += '\n' + '👉 ' +  serve + '#/?r=' +  invitationCodes
         }
     }
 
@@ -61,7 +64,6 @@ export async function generateInvitationLink(invitationSub: string): Promise<boo
         return true;
     } catch (err) {
         console.error("copy error:", err);
-        alert("generate error");
         return false;
     }
 }

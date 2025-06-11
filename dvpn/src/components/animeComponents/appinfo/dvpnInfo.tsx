@@ -1,6 +1,6 @@
 
 
-import "../../../style/components/anime/dvpnInfo.css"
+import "@/style/components/anime/dvpnInfo.css"
 import InfoBlock, { Direction, Photo } from "../template/infoBlock"
 
 import { useTranslation } from "react-i18next";

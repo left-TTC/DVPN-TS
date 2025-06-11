@@ -1,5 +1,5 @@
-import { JsonD } from "./generateInvitationLink";
-import { getQueryVariable } from "./getQueryVariable";
+import { JsonD } from "@/utils/generateInvitationLink";
+import { getQueryVariable } from "@/utils/getQueryVariable";
 
 
 export interface QRcodeInfo{

@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 
 
-import "../../../style/components/anime/infoBlock.css"
+import "@/style/components/anime/infoBlock.css"
 import { animate } from "animejs";
 
-import freenode from "../../../assets/freecode.png"
-import safty from "../../../assets/safe.png"
-import stable from "../../../assets/stable.png"
-import solana from "../../../assets/solana.png"
+import freenode from "@/assets/freecode.png"
+import safty from "@/assets/safe.png"
+import stable from "@/assets/stable.png"
+import solana from "@/assets/solana.png"
 
 export enum Direction{
     Left,

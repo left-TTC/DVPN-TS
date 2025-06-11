@@ -1,6 +1,6 @@
 import { useRef, useImperativeHandle, forwardRef } from "react";
-import "../../../style/components/downloadPage/appinfo/videoPlayer.css";
-import i18n from "../../../i18n";
+import "@/style/components/downloadPage/appinfo/videoPlayer.css";
+import i18n from "@/i18n";
 
 // const OKCACHE: number = 40;
 // const COULDPLAYATIME: number = 3;

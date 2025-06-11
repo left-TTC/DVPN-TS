@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react"
 
-import "../../../style/components/downloadPage/appinfo/apinfoEnd.css"
+import "@/style/components/downloadPage/appinfo/apinfoEnd.css"
 
-import moreInfo from "../../../assets/moreInfo.svg"
+import moreInfo from "@/assets/moreInfo.svg"
 import { animate } from "animejs"
 
 import { useTranslation } from "react-i18next";
-import { copyShare } from "../../../utils/copyShare";
-import { downloadDVPN } from "../../../utils/downloadApk";
-import { readVersionCode } from "../../../utils/getVersion";
+import { copyShare } from "@/utils/copyShare";
+import { downloadDVPN } from "@/utils/downloadApk";
+import { readVersionCode } from "@/utils/getVersion";
 
 const AppInfoEnd = () => {
     const { t } = useTranslation();
