@@ -17,7 +17,7 @@ function apkMimeTypePlugin() {
 }
 
 export default defineConfig({
-  base: './', 
+  base: '/dvpn/dist/', // ✅ 设置部署子路径
   plugins: [
     react(),
     apkMimeTypePlugin()

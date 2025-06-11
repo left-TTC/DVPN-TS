@@ -1,7 +1,6 @@
 
 
 import { useTranslation } from "react-i18next"
-import icon from "../../assets/dvpn.png"
 
 import "../../style/components/invitePage/invitationGenerator.css"
 
