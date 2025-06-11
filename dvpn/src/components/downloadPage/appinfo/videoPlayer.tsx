@@ -18,20 +18,20 @@ const VideoPlayer = forwardRef<VideoPlayerHandle, {}>((_, ref) => {
     const videoRef = useRef<HTMLVideoElement | null>(null);
 
     const currentLanguage = i18n.language;
-    let videoSrc = "/video/DVPN.mp4";
+    let videoSrc = "./video/DVPN.mp4";
 
     switch (currentLanguage) {
         case "zh":
         case "zh-CN":
-            videoSrc = "/video/zhdvpn.mp4";
+            videoSrc = "./video/zhdvpn.mp4";
             break;
         case "en":
         case "en-GB":
         case "en-US":
-            videoSrc = "/video/DVPN.mp4";
+            videoSrc = "./video/DVPN.mp4";
             break;
         default:
-            videoSrc = "/video/DVPN.mp4";
+            videoSrc = "./video/DVPN.mp4";
     }
 
     useImperativeHandle(ref, () => ({

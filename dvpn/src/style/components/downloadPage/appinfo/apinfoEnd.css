@@ -40,6 +40,11 @@
     font-weight: 700;
 }
 
+.appinfoend h3{
+    color: white;
+    margin-top: 60px;
+}
+
 .appinfoendbutton{
     background: linear-gradient(to right, #08BBFF, #2A76FF);
     color: white;

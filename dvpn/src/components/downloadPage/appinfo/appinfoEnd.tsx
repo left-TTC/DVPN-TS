@@ -8,6 +8,7 @@ import { animate } from "animejs"
 import { useTranslation } from "react-i18next";
 import { copyShare } from "../../../utils/copyShare";
 import { downloadDVPN } from "../../../utils/downloadApk";
+import { readVersionCode } from "../../../utils/getVersion";
 
 const AppInfoEnd = () => {
     const { t } = useTranslation();
@@ -46,6 +47,9 @@ const AppInfoEnd = () => {
         };
     },[])
 
+    const lastestVersion = readVersionCode()
+    const version = lastestVersion? (lastestVersion) : ("Load Fail")
+
     return(
         <div ref={appInfoEndRef} className="appinfoend">
             <div className="moreInfoBox">
@@ -54,8 +58,9 @@ const AppInfoEnd = () => {
             <h1>{t("wwillcontinue..")}</h1>
             <h2>{t("joinustoenter..")}</h2>
             <button className="appinfoendbutton" onClick={() => download()}>
-                {t("joinDVPN")}
+                {t("download")}
             </button>
+            <h3>{t("newestVersion")}: {version}</h3>
         </div>
     )
 }
