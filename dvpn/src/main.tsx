@@ -6,11 +6,14 @@ import "./global.css"
 import { WeChatProvider } from './context/wechatProvider.tsx'
 
 import "./i18n";
+import { ToastProvider } from './context/toastProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <WeChatProvider>
-      <App />
-    </WeChatProvider>
+        <WeChatProvider>
+            <ToastProvider>
+                <App />
+            </ToastProvider>
+        </WeChatProvider>
   </StrictMode>
 )

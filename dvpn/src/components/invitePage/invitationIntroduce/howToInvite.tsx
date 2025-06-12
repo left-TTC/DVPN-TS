@@ -15,11 +15,15 @@ import { Pagination } from "swiper/modules";
 import { useTranslation } from "react-i18next";
 import { useEffect, useRef, useState } from "react";
 import { animate } from "animejs";
+import { generateInvitationLink } from "@/utils/generateInvitationLink";
+import { ToastTypes, useToast } from "@/context/toastProvider";
 
 export interface howToInviteItem {
     img: string,
     title: string,
     way: string,
+    link: string,
+    links: string,
 }
 
 const HowToInviteEffectively = () => {
@@ -28,6 +32,8 @@ const HowToInviteEffectively = () => {
     const howToInviteRef = useRef<HTMLDivElement | null> (null)
     const observerRef = useRef<IntersectionObserver | null>(null)
     const [hasAnimated, setHasAnimated] = useState(false)
+
+    const toast = useToast()
 
     useEffect(() => {
         const template = howToInviteRef.current
@@ -62,31 +68,51 @@ const HowToInviteEffectively = () => {
         img: facebook,
         title: t("facebook"),
         way: t("facebookway"),
+        link: t("facebooklink"),
+        links: "fb://profile"
     }
     content[1] = {
         img: wechat,
         title: t("wechat"),
         way: t("wechatway"),
+        link: t("wechatlink"),
+        links: "weixin://"
     }
     content[2] = {
         img: twwiter,
         title: t("twwiter"),
         way: t("twwiterway"),
+        link: t("twwiterlink"),
+        links: "twitter://"
     }
     content[3] = {
         img: youtube,
         title: t("youtube"),
         way: t("youtubeway"),
+        link: t("youtubelink"),
+        links: "youtube://"
     }
     content[4] = {
         img: orthers,
         title: t("orthers"),
         way: t("orthersway"),
+        link: t("ortherslink"),
+        links: "aaaa"
     }
     content[5] = {
         img: telegram,
         title: t("telegram"),
-        way: t("teleway")
+        way: t("teleway"),
+        link: t("telegramlink"),
+        links: "tg://"
+    }
+
+    const copyShareAndOpenApp = (title: string) =>{
+        generateInvitationLink(t("invitatinwords"))
+        console.log(title)
+        if(title != "Others"){
+            toast(t("copy" ), ToastTypes.Success, 1000)
+        }
     }
 
     return(
@@ -110,6 +136,7 @@ const HowToInviteEffectively = () => {
                                 </div>
                                 <h3 className="slideTitle">{item.title}</h3>
                                 <h4 className="siideText">{item.way}</h4>
+                                <a href={item.links} onClick={() => copyShareAndOpenApp(item.title)}>{item.link}</a>
                             </div>
                         </SwiperSlide>
                     ))}

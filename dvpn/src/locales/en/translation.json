@@ -63,6 +63,18 @@
     "usedvpn": "Use D-VPN to overcome all your network obstacles",
     "telegram": "telegram",
     "teleway": "Copy your link or QR code and share it to your Telegram group",
-    "newestVersion": "The Latsest Version"
-
+    "newestVersion": "The Latsest Version",
+    "scantodownload": "Scan QRcode to Download DVPN",
+    "p2pcommunication": "P2P Communication",
+    "breakNetwork": "Breake Network Blockades",
+    "breakelocal": "Breake Geographical Restrictions",
+    "saferAndStable": "Safer and More Stable",
+    "facebooklink": "Share on FaceBook",
+    "wechatlink": "Share on Wechat",
+    "twwiterlink": "Share on Twwiter",
+    "youtubelink": "Open Youtube",
+    "ortherslink": "Learn More about D-VPN",
+    "telegramlink": "Share On Telegram",
+    "copy": "Copy Invite Links Success",
+    "clicktosaveQRcode": "Click to Save QRcode"
 }

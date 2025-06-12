@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import { VitePluginFonts } from 'vite-plugin-fonts';
 
 function apkMimeTypePlugin() {
 	return {
@@ -19,7 +20,12 @@ function apkMimeTypePlugin() {
 export default defineConfig({
 	plugins: [
 		react(),
-		apkMimeTypePlugin()
+		apkMimeTypePlugin(),
+		VitePluginFonts({
+			google: {
+				families: ['Roboto']
+			}
+		})
 	],
 	resolve: {
 		alias: {

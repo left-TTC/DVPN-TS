@@ -13,22 +13,37 @@ import { generateInvitationLink } from "@/utils/generateInvitationLink"
 import QRcodeGenerator from "@/components/invitePage/invitationGenerator/QRcodeGennerator"
 import { useInviteContext } from "@/pages/invite"
 import { animate } from "animejs"
+import { useToast } from "@/context/toastProvider"
+import LanguageChooser from "./invitationGenerator/languageChooser"
 
 export interface InvitationGeneratorProps{
     ifIntroduceDown: boolean,
 }
 
+export enum ChooseLanguageType{
+    None,
+    Chinese,
+    English,
+    Spanish,
+    Arabic,
+    Russian,
+}
+
 const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDown}) => {
 
     const { t } = useTranslation()
+    const toast = useToast()
 
     const [ifLinkOk, setIfLinkOk] = useState(false)
+    const [chooseLanguage, setChooseLanguage] = useState<ChooseLanguageType>(ChooseLanguageType.None)
 
     const generateLink = async() => {
         const copyRes = await generateInvitationLink(t("invitatinwords"))
 
         if(copyRes){
             setIfLinkOk(true)
+            toast(t("copy"), undefined, 1000)
+            console.log("toast ok")
             setTimeout(() => {
                 setIfLinkOk(false)
             }, 4000)
@@ -39,6 +54,8 @@ const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDow
     const {ifShowQRCode} = useInviteContext()
     const loadRef = useRef<HTMLImageElement | null>(null)
     const QRRef = useRef<HTMLDivElement | null>(null)
+
+    const [ifChooseQrLanguage, setIfChooseQrLanguage] = useState(false)
 
     useEffect(() => {
         if(ifDrawingQRcode){
@@ -106,10 +123,15 @@ const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDow
                 }
             </button>
             <div className="InvitationGeneratorQRblock" ref={QRRef}>
-                <QRcodeGenerator ifdrawing={ifDrawingQRcode} setDrawingState={setIfDrawingQRcode}/>
+                <QRcodeGenerator ifdrawing={ifDrawingQRcode} setDrawingState={setIfDrawingQRcode} openChooseBlock={setIfChooseQrLanguage}/>
             </div>
+            {ifChooseQrLanguage &&
+                <LanguageChooser closeChooseBlock={setIfChooseQrLanguage} chooseLanguage={setChooseLanguage}/>
+            }
         </div>
     )
+
+    
 }
 
 

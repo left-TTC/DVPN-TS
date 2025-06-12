@@ -1,4 +1,4 @@
-import React, { useEffect, useRef} from "react";
+import React, { useEffect, useMemo, useRef, useState, type SetStateAction} from "react";
 import { useInviteContext } from "@/pages/invite";
 import { useTranslation } from "react-i18next";
 import { generateQRCodeTextAndLabel } from "@/utils/generateQRCode";
@@ -9,15 +9,17 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-    import "@/style/components/invitePage/QRcodeGenerator/QRcodeGenerator.css";
+import "@/style/components/invitePage/QRcodeGenerator/QRcodeGenerator.css";
+import SharePhotoGenerator, { type SharePhotoGeneratorRef } from "./sharePhotoGenerator";
 
 
 export interface QRcodeGeneratorProps {
     ifdrawing: boolean
     setDrawingState: React.Dispatch<React.SetStateAction<boolean>>;
+    openChooseBlock: React.Dispatch<SetStateAction<boolean>>;
 }
 
-const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawingState }) => {
+const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawingState, openChooseBlock }) => {
     const { t } = useTranslation();
     const { setIfShowQRCode } = useInviteContext();
 
@@ -26,72 +28,71 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawing
 
     let originalContext = generateQRCodeTextAndLabel();
 
+    const [currentCanvasElement, setCurrentCanvasElement] = useState<HTMLCanvasElement | null>(null);
+
     useEffect(() => {
         const checkAllQRcodeOK = () => {
             const allOk = canvasRefs.current.every(
                 (canvas) => canvas && canvas.toDataURL().length > 100
             );
-            console.log("checking")
 
             if (allOk && !hasChecked.current) {
                 hasChecked.current = true;
                 setDrawingState(false);
                 setIfShowQRCode(true);
-                console.log("draw ok")
+
+                if (canvasRefs.current[0]) {
+                    setCurrentCanvasElement(canvasRefs.current[0]);
+                }
             } else {
                 setTimeout(checkAllQRcodeOK, 100);
             }
         };
 
         if(ifdrawing){
-            checkAllQRcodeOK()
+            checkAllQRcodeOK();
         }
-    }, [ifdrawing]);
+    }, [ifdrawing, setDrawingState, setIfShowQRCode]); 
 
+    const generatorRef = useRef<SharePhotoGeneratorRef>(null);
 
-    const handleSaveQRCode = (index: number) => {
-        const canvas = canvasRefs.current[index];
-        if (!canvas) return;
-
-        const image = canvas.toDataURL("image/png");
-
-        const link = document.createElement("a");
-        link.href = image;
-        link.download = `qrcode-${index + 1}.png`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    const handleSaveQRCode = () => {
+        openChooseBlock(true)
+        // generatorRef.current?.getSharePhoto();
     };
 
     const returnEmoji = () => {
-        const randomInt = Math.floor(Math.random() * 11);
-        switch(randomInt){
-            case 0:
-                return "🥰"
-            case 1:
-                return "😘"
-            case 2:
-                return "😋"
-            case 3:
-                return "🤩"
-            case 4:
-                return "🐱"
-            case 5:
-                return "🌞"
-            case 6:
-                return "🐼"
-            case 7:
-                return "👻"
-            case 8:
-                return "🤗"
-            case 9:
-                return "🥳"
-            default:
-                return "🎃"
-        }
+        const emojis = ["🥰", "😘", "😋", "🤩", "🐱", "🌞", "🐼", "👻", "🤗", "🥳", "🎃"];
+        return emojis[Math.floor(Math.random() * emojis.length)];
     }
 
     const shouldLoop = originalContext.length > 2;
+
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+        const updateCurrentCanvas = () => {
+            const canvas = canvasRefs.current[activeIndex];
+            if (canvas && canvas.toDataURL().length > 100) { // 确保画布已完全绘制
+                setCurrentCanvasElement(canvas);
+            } else {
+                setTimeout(updateCurrentCanvas, 100);
+            }
+        };
+
+        if (ifdrawing) { 
+            updateCurrentCanvas();
+        } else if (canvasRefs.current[activeIndex]) {
+            setCurrentCanvasElement(canvasRefs.current[activeIndex]);
+    }
+
+
+    }, [activeIndex, ifdrawing]); 
+
+    const currentCanvasRefObj = useMemo(() => {
+        return { current: currentCanvasElement } as React.RefObject<HTMLCanvasElement>;
+    }, [currentCanvasElement]);
+
 
     return (
         <div className="QRcodeGenerator">
@@ -109,23 +110,29 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawing
                     loop={shouldLoop}
                     centeredSlides={true}
                     style={{ paddingBottom: "40px" }}
+                    onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                 >
                     {originalContext.map((url, index) => (
                         <SwiperSlide key={`${url.text}-${index}`}>
                             <div className="QROne">
-                                <button className="domaintypeblock"  onClick={() => handleSaveQRCode(index)}>
+                                <button className="domaintypeblock"  onClick={() => handleSaveQRCode()}>
                                     <div className="QRcodescreenshotintroduce">
-                                        <h1>{t("scanitandownloadapp")}</h1>
+                                        <h1>{t("clicktosaveQRcode")}</h1>
                                     </div>
                                     <h1>{returnEmoji()}</h1>
                                 </button>
-                                <p>service {index + 1}</p>
+                                <p>{t("scanitandownloadapp")}</p>
                                 <QRCodeCanvas
                                     value={url.text}
                                     size={200}
                                     level="H"
                                     style={{ backgroundColor: "white",marginBottom:'40px',padding:'10px' }}
-                                    ref={(el) => { canvasRefs.current[index] = el; }}
+                                    ref={(el) => {
+                                        canvasRefs.current[index] = el;
+                                        if (index === activeIndex && el && el.toDataURL().length > 100) {
+                                            setCurrentCanvasElement(el);
+                                        }
+                                    }}
                                 />
                             </div>
                         </SwiperSlide>
@@ -134,6 +141,7 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawing
                 <h1>{t("experiencebetter")}</h1>
                 <h2>{t("makeyoubetternetwork")}</h2>
                 <h3>{t("usedvpn")}</h3>
+                <SharePhotoGenerator QrRef={currentCanvasRefObj} ref={generatorRef}/>
             </div>
         </div>
     );

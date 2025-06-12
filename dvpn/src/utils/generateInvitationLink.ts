@@ -33,7 +33,8 @@ export async function generateInvitationLink(invitationSub: string): Promise<boo
     };
 
     const urlParams = new JsonD(invitationCode);
-    
+    // urlParams.serve[1] = "https://ipfs.io/ipfs/bafybeigf5rq5s5cs4ef5kpvfexkpirijdqeb5skyfuoiuezf5odnc75c5y/" 
+
     const invitationCodes = urlParams.invitationCodes;
 
     let links: string = "";

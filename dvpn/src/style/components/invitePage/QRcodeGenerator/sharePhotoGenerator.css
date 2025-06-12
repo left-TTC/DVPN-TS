@@ -1,0 +1,143 @@
+
+
+
+
+@media (max-width: 600px){
+    .SharePhotoGeneratorBox{
+        margin-top: 100px;
+        position: relative;
+        width: 100%;
+        aspect-ratio: 9 / 17;
+        display: flex;
+        flex-direction: column;
+        background-color: black;
+        background-image: url('./image/QRcodeBackground.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center -80px;
+    }
+
+    .sharePhotoDVPN{
+        font-size: 55px!important;
+        text-align: left;
+        font-style: italic!important;
+        font-family:'Times New Roman', Times, serif!important;
+        font-weight: 900!important;
+        color: white!important;
+    }
+
+    .SharePhotoGeneratorBox h2{
+        font-size: 18px;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
+        margin-top: -25px;
+        font-style: italic!important;
+        font-weight: 500;
+        color: #08BBFF;
+    }
+
+    .sharePhotoQRcodeContainer{
+        background-color: white;
+        width: 270px;
+        height: 285px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        flex-direction: column;
+        border-radius: 20px;
+    }
+    
+
+    .sharePhotoTitle{
+        margin-top: 220px;
+        background-color: black;
+        opacity: 0.6;
+    }
+    
+    .DVPNBox{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .sharePhotoDvpn{
+        width: 130px;
+        padding-left: 20px;
+    }
+
+    .introduceBox{
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        opacity: 0.8;
+    }
+
+    .p2p {
+        top: 10px;
+        height: 16px;
+        border-radius: 10px;
+        background: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .Dot{
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        filter: blur(2px);
+    }
+
+    .blue {
+        background-color: #08BBFF;
+        
+    }
+
+    .p2pcommunication{
+        font-size: 17px!important;
+        font-weight: 300!important;
+    }
+
+    .green {
+        background-color: greenyellow;
+    }
+
+    .break{
+        top: 48px;
+        right: 0;
+        height: 16px;
+        border-radius: 10px;
+        background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, black 100%);
+    }
+
+    .breakNetwork{
+        font-size: 16px!important;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
+        font-weight: 300!important;
+    }
+
+    .local{
+        top: 85px;
+        height: 16px;
+        border-radius: 10px;
+        background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, black 100%);
+    }
+
+    .red{
+        background-color: red;
+    }
+
+    .safe {
+        top: 120px;
+        right: 0;
+        height: 16px;
+        border-radius: 10px;
+        background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, black 100%);
+    }
+
+    .purple{
+        background-color: purple;
+    }
+}

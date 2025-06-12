@@ -1,21 +1,19 @@
+import html2canvas from "html2canvas";
 
+export function generateInvitationImg(element: HTMLDivElement | null) {
+    if(!element)return
 
+    html2canvas(element,{
+        useCORS: true,
+        allowTaint: false,
+        scale: 2
+    }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
 
-
-export function generateInvitation(QRcanvas: HTMLCanvasElement | null) {
-    if(!QRcanvas)return
-
-    const posterWrapper = document.createElement("div")
-    
+        const link = document.createElement("a");
+        link.href = imgData;
+        link.download = "invitation.png";
+        link.click();
+    });
 }
 
-
-function setOverallStyle(poster: HTMLDivElement){
-    poster.style.position = "fixed"
-    poster.style.top = "-9999px"
-    poster.style.width = "1080px"
-    poster.style.height = "1920px"
-    poster.style.display = "flex"
-    poster.style.flexDirection = "column"
-    poster.style.backgroundImage = "url('./image/QRcodeBackg.png')";
-}

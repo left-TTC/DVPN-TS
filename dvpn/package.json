@@ -20,7 +20,8 @@
     "react-dom": "^19.1.0",
     "react-i18next": "^15.5.2",
     "react-router-dom": "^7.6.0",
-    "swiper": "^11.2.8"
+    "swiper": "^11.2.8",
+    "vite-plugin-fonts": "^0.7.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

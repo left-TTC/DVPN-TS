@@ -29,7 +29,7 @@ const Whyinviteorthers: React.FC<WhyInviteOrthersProps> = ({imgPath, content}) =
     switch(imgPath){
         case imgPaths.P2P:
             path = p2p
-            classname = "p2p"
+            classname = "p2pwhy"
             break
         case imgPaths.FWC:
             path = fwc
