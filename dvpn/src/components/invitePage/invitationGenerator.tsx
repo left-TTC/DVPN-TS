@@ -13,8 +13,9 @@ import { generateInvitationLink } from "@/utils/generateInvitationLink"
 import QRcodeGenerator from "@/components/invitePage/invitationGenerator/QRcodeGennerator"
 import { useInviteContext } from "@/pages/invite"
 import { animate } from "animejs"
-import { useToast } from "@/context/toastProvider"
 import LanguageChooser from "./invitationGenerator/languageChooser"
+import { useFixedToast } from "@/context/fixedToastProvider"
+import { FixedToastType, type Message } from "@/utils/fixedToast"
 
 export interface InvitationGeneratorProps{
     ifIntroduceDown: boolean,
@@ -32,7 +33,8 @@ export enum ChooseLanguageType{
 const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDown}) => {
 
     const { t } = useTranslation()
-    const toast = useToast()
+
+    const fixedToast = useFixedToast()
 
     const [ifLinkOk, setIfLinkOk] = useState(false)
     const [chooseLanguage, setChooseLanguage] = useState<ChooseLanguageType>(ChooseLanguageType.None)
@@ -42,8 +44,13 @@ const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDow
 
         if(copyRes){
             setIfLinkOk(true)
-            toast(t("copy"), undefined, 1000)
-            console.log("toast ok")
+
+            const copyMessage: Message = {
+                title: t("copy"),
+                content: t("youhavecopied"),
+                confirm: t("done"),
+            }
+            fixedToast(copyMessage, FixedToastType.OK)
             setTimeout(() => {
                 setIfLinkOk(false)
             }, 4000)

@@ -7,12 +7,15 @@ import { WeChatProvider } from './context/wechatProvider.tsx'
 
 import "./i18n";
 import { ToastProvider } from './context/toastProvider.tsx'
+import { FixedToastProvider } from './context/fixedToastProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
         <WeChatProvider>
             <ToastProvider>
-                <App />
+                <FixedToastProvider>
+                    <App />
+                </FixedToastProvider>
             </ToastProvider>
         </WeChatProvider>
   </StrictMode>
