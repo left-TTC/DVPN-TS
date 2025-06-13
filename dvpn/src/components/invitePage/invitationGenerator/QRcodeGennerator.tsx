@@ -11,15 +11,17 @@ import "swiper/css/pagination";
 
 import "@/style/components/invitePage/QRcodeGenerator/QRcodeGenerator.css";
 import SharePhotoGenerator, { type SharePhotoGeneratorRef } from "./sharePhotoGenerator";
+import type { ChooseLanguageType } from "@/components/invitePage/invitationGenerator";
 
 
 export interface QRcodeGeneratorProps {
     ifdrawing: boolean
     setDrawingState: React.Dispatch<React.SetStateAction<boolean>>;
     openChooseBlock: React.Dispatch<SetStateAction<boolean>>;
+    languageType: ChooseLanguageType
 }
 
-const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawingState, openChooseBlock }) => {
+const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawingState, openChooseBlock, languageType }) => {
     const { t } = useTranslation();
     const { setIfShowQRCode } = useInviteContext();
 
@@ -58,8 +60,17 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawing
 
     const handleSaveQRCode = () => {
         openChooseBlock(true)
-        // generatorRef.current?.getSharePhoto();
     };
+
+    const [canChangeLanguage, setCanChangeLanguage] = useState(false)
+
+    useEffect(() => {
+        console.log("ready for keep:", generatorRef.current?.canGeneratePhoto)
+        if(canChangeLanguage){
+            generatorRef.current?.getSharePhoto();
+            setCanChangeLanguage(false)
+        }
+    },[canChangeLanguage])
 
     const returnEmoji = () => {
         const emojis = ["🥰", "😘", "😋", "🤩", "🐱", "🌞", "🐼", "👻", "🤗", "🥳", "🎃"];
@@ -70,7 +81,7 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawing
 
     const [activeIndex, setActiveIndex] = useState(0);
 
-    useEffect(() => {
+    useEffect(() => {   
         const updateCurrentCanvas = () => {
             const canvas = canvasRefs.current[activeIndex];
             if (canvas && canvas.toDataURL().length > 100) { // 确保画布已完全绘制
@@ -141,7 +152,7 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({ ifdrawing, setDrawing
                 <h1>{t("experiencebetter")}</h1>
                 <h2>{t("makeyoubetternetwork")}</h2>
                 <h3>{t("usedvpn")}</h3>
-                <SharePhotoGenerator QrRef={currentCanvasRefObj} ref={generatorRef}/>
+                <SharePhotoGenerator QrRef={currentCanvasRefObj} languageType={languageType} canChangeLanguage={canChangeLanguage} setCanChangeLanguage={setCanChangeLanguage} ref={generatorRef}/>
             </div>
         </div>
     );

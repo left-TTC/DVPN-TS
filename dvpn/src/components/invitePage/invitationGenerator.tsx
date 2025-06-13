@@ -22,11 +22,11 @@ export interface InvitationGeneratorProps{
 
 export enum ChooseLanguageType{
     None,
-    Chinese,
     English,
+    Chinese,
     Spanish,
-    Arabic,
     Russian,
+    Arabic,
 }
 
 const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDown}) => {
@@ -123,7 +123,7 @@ const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDow
                 }
             </button>
             <div className="InvitationGeneratorQRblock" ref={QRRef}>
-                <QRcodeGenerator ifdrawing={ifDrawingQRcode} setDrawingState={setIfDrawingQRcode} openChooseBlock={setIfChooseQrLanguage}/>
+                <QRcodeGenerator ifdrawing={ifDrawingQRcode} setDrawingState={setIfDrawingQRcode} openChooseBlock={setIfChooseQrLanguage} languageType={chooseLanguage}/>
             </div>
             {ifChooseQrLanguage &&
                 <LanguageChooser closeChooseBlock={setIfChooseQrLanguage} chooseLanguage={setChooseLanguage}/>

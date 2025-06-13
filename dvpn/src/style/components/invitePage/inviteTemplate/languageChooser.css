@@ -18,23 +18,59 @@
         border-radius: 20px;
         position: absolute;
         bottom: 50%;
+        box-shadow: 1px 2px 1px 2px white;
+    }
+
+    .chooserBlcok h1{
+        font-size: 20px;
+        text-align: center;
+        font-weight: 500;
+        color: black;
     }
 
     .blackBack{
-        background-color: black;
+        background-color: rgba(0, 0, 0, 0.6); /* 半透明黑 */
+        backdrop-filter: blur(15px);
         position: absolute;
         height: 100%;
         width: 100%;
-        opacity: 0.6;
     }
 
     .buttonBlock{
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
+        padding-top: 7px;
     }
     
     .languageclass{
         display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 每行3个 */
+        gap: 12px;
+        padding: 3px 12px 12px 12px; 
+        height: 80px;
     }
+
+    .languageclassitem{
+        background: linear-gradient(to right, #08BBFF, #2A76FF);   
+        border-radius: 8px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        color: white;
+    }
+
+    .languageclassitem.selected {
+        border: 2px yellow solid;
+        background: linear-gradient(to right, rgb(209, 237, 167), greenyellow);
+        color: rgb(72, 71, 71);
+    }
+
+    .chooserPagecon{
+        background-color: gainsboro;
+        border:  none;
+        outline: none;
+    }
+
 }
