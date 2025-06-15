@@ -1,54 +1,119 @@
 
+/* phone */
+@media (max-width: 600px){
+    .appinfoend{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 30px;
+        padding: 10px;
+        opacity: 0;
+    }
 
-.appinfoend{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 30px;
-    padding: 10px;
-    opacity: 0;
+    .moreInfoBox{
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(to right, #08BBFF, #2A76FF);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 35%;
+    }
+
+    .moreInfoImg{
+        width: 80px;
+    }
+
+    .appinfoend h1{
+        font-size: 23px;
+        color: white;
+        text-align: left;
+        margin-top: 40px;
+        font-weight: 1000;
+    }
+
+    .appinfoend h2{
+        font-size: 20px;
+        color: #2EBFFF;
+        text-align: left;
+        margin-top: -6px;
+        font-weight: 700;
+    }
+
+    .appinfoend h3{
+        color: white;
+        margin-top: 60px;
+    }
+
+    .appinfoendbutton{
+        background: linear-gradient(to right, #08BBFF, #2A76FF);
+        color: white;
+        font-weight: 900;
+        font-size: 21px;
+        border-radius: 7px;
+    }
 }
 
-.moreInfoBox{
-    width: 120px;
-    height: 120px;
-    background: linear-gradient(to right, #08BBFF, #2A76FF);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 35%;
-}
+@media (min-width: 601px){
+    .appinfoend{
+        position: absolute;
+        width: 100%;
+        top: 3700px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        padding: 10px;
+        opacity: 0;
+        padding-bottom: 100px;
+        text-align: center;
+    }
 
-.moreInfoImg{
-    width: 80px;
-}
+    .moreInfoBox{
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(to right, #08BBFF, #2A76FF);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.appinfoend h1{
-    font-size: 23px;
-    color: white;
-    text-align: left;
-    margin-top: 40px;
-    font-weight: 1000;
-}
+    .moreInfoImg{
+        width: 80px;
+    }
 
-.appinfoend h2{
-    font-size: 20px;
-    color: #2EBFFF;
-    text-align: left;
-    margin-top: -6px;
-    font-weight: 700;
-}
+    .appinfoend h1{
+        font-size: 48px;
+        color: white;
+        text-align: left;
+        margin-top: 40px;
+        font-weight: 1000;
+    }
 
-.appinfoend h3{
-    color: white;
-    margin-top: 60px;
-}
+    .appinfoend h2{
+        font-size: 40px;
+        color: #2EBFFF;
+        text-align: left;
+        margin-top: -6px;
+        font-weight: 700;
+    }
 
-.appinfoendbutton{
-    background: linear-gradient(to right, #08BBFF, #2A76FF);
-    color: white;
-    font-weight: 900;
-    font-size: 21px;
-    border-radius: 7px;
+    .appinfoend h3{
+        color: white;
+        margin-top: 60px;
+        font-size: 36px;
+    }
+
+    .appinfoendbutton{
+        background: linear-gradient(to right, #08BBFF, #2A76FF);
+        color: white;
+        font-weight: 900;
+        font-size: 40px;
+        border-radius: 7px;
+        outline: none;
+        border: none;
+    }
 }

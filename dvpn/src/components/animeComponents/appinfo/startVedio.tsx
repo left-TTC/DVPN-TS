@@ -1,9 +1,10 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import "@/style/components/anime/startVedio.css"
 import { animate } from "animejs"
 
 
 import play from "@/assets/play.svg"
+import pauseicon from "@/assets/pause.svg"
 
 interface VedioProps {
     ifLoadideo: boolean,
@@ -62,21 +63,29 @@ const StartVedio: React.FC<VedioProps> = ({ ifLoadideo, setLoad, playVideo, paus
         };
     }, []);
 
+    const [ifpauseIcon, setIfpauseIcon] = useState(false)
+
     const hadleButton = () => {
         if(!ifLoadideo){
             setLoad(true)
         }else{
             if(!getPlayingState()){
                 playVideo()
+                setIfpauseIcon(true)
             }else{
                 pause()
+                setIfpauseIcon(false)
             }
         }
     }
 
     return (
-        <button onClick={hadleButton} className="load loadbutton" ref={startRef}>
-            <img src={play} className="playvedio"/>
+        <button onClick={hadleButton} className="loadbutton" ref={startRef}>
+            {!ifpauseIcon    ? 
+                (<img src={ play} className="playvedio"/>) :
+                (<img src={ pauseicon} className="pausevedio"/>)
+            }
+            
         </button>
     );
 };

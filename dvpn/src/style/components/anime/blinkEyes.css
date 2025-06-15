@@ -32,3 +32,16 @@
     }
 
 }
+
+@media (min-width: 601px){
+    .eye{
+        display: none;
+    }
+
+    .eye-container{
+        width: 90%;
+        height: 250px;
+        background-color: white;
+        border-radius: 20px;
+    }
+}

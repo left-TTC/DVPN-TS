@@ -123,10 +123,10 @@ const InfoBlock: React.FC<infoBlockProps> = ({direction, text, title, photo}) =>
 
     return(
         <div className="smallinfoblock" ref={infoBlockRef}>
-            <div ref={titleBlockRef} className={`infoBlockContentBlock ${ifLeft ? 'leftdir' : 'rightdir'}`} >
+            <div ref={titleBlockRef} className={`infoBlockContentBlock ${ifLeft ? 'leftdirline' : 'rightdirline'}`} >
                 <h1>{title} </h1>
             </div>
-            <div ref={infoBlockTextRef} className={`infoblocktextblock ${!ifLeft ? 'leftdir' : 'rightdir'}`}>
+            <div ref={infoBlockTextRef} className={`infoblocktextblock ${!ifLeft ? 'leftdirline1' : 'rightdirline1'}`}>
                 <ul className={`infoblocktextbox ${ifLeft ? 'lefttext' : 'righttext'}`} ref={textRef}>
                     {text.map((line, index) => (
                         <li className="textboxContents" key={index}>{line}</li>

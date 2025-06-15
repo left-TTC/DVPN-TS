@@ -31,3 +31,28 @@
 
     
 }
+
+@media (min-width: 601px){
+    .loadbutton{
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background-color: #39c5e0;
+        filter: blur(0.3px);
+        opacity: 0.7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+        border: none;
+        outline: none;
+    }
+
+    .playvedio{
+        width: 130px;
+    }
+
+    .pausevedio{
+        width: 50px;
+    }
+}

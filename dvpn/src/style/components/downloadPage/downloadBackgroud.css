@@ -110,11 +110,105 @@
 }
 
 /* ipad */
-@media (min-width: 601px) and (max-width: 1024px) {
+/* @media (min-width: 601px) and (max-width: 1024px) {
 
-}
+} */
 
 /* conmputer */
-@media (min-width: 1025px) {
+@media (min-width: 601px) {
+    .photoBack{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 50%;
+        position: absolute;
+        top: 400px;
+        left: 25%;
+    }
 
+    .backimg{
+        display:  none;
+    }
+
+    .downloadicon{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .downloadicon h1{
+        color: white;
+    }
+
+    .downloadDVPN{
+        width: 160px;
+    }
+
+    .introduce{
+        font-size: 9px;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 200!important;
+        color: white;
+        margin-top: -30px;
+    }
+
+    .buttons{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        height: 20px;
+    }
+
+    .downloadD{
+        font-size: 8px;
+        padding: auto;
+        width: 110%;
+        max-width: 450px;
+        height: 60px;
+        margin-top: 25px;
+        display: flex;
+        align-items: center;
+        color: white;
+        border-radius: 10px;
+        flex-direction: row;
+        background: linear-gradient(to right, #08BBFF, #2A76FF);
+        justify-content: space-around;
+        border: none;
+        outline: none;
+        z-index: 100;
+    }
+
+    .inviteD {
+        font-size: 7px;
+        max-width: 450px;
+        padding: auto;
+        width: 110%;
+        height: 60px;
+        margin-top: 25px;
+        display: flex;
+        align-items: center;
+        color: white;
+        border-radius: 10px;
+        flex-direction: row;
+        background: linear-gradient(to right, #2A76FF, #08BBFF);
+        justify-content: space-around;
+        border: none;
+        outline: none;
+        z-index: 100;
+    }
+
+    .android{
+        width: 36px;
+    }
+
+    .invitepho{
+        width: 30px;
+    }
+}
+
+@media (600px < width < 2200px){
+    .photoBack{
+        top: 600px;
+        left: 36%;
+    }
 }

@@ -12,6 +12,7 @@ import AppInfoEnd from "@/components/downloadPage/appinfo/appinfoEnd";
 import fullScreen from "@/assets/full-screen.svg"
 import voice from "@/assets/voice_fill.svg"
 
+
 import { useTranslation } from "react-i18next"
 import { animate } from "animejs";
 
