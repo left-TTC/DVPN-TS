@@ -6,10 +6,10 @@ interface FixedToastMessage {
     id: number;
     message: Message;
     type: FixedToastType;
-    
+    onConfirm?: () => void;
 }
 
-type ShowFixedToastFunction = (message: Message, type: FixedToastType) => void;
+type ShowFixedToastFunction = (message: Message, type: FixedToastType, onConfirm?: () => void) => void;
 
 const FixedToastContext = createContext<ShowFixedToastFunction | null>(null);
 
@@ -17,11 +17,14 @@ export const FixedToastProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const [toasts, setToasts] = useState<FixedToastMessage[]>([]);
     const [nextId, setNextId] = useState(0);
 
-    const showFixedToast: ShowFixedToastFunction = useCallback((message, type) => {
-        const id = nextId;
-        setNextId(prev => prev + 1);
-        setToasts(prev => [...prev, { id, message, type }]);
-    }, [nextId]);
+    const showFixedToast: ShowFixedToastFunction = useCallback(
+        (message, type, onConfirm) => {
+            const id = nextId;
+            setNextId(prev => prev + 1);
+            setToasts(prev => [...prev, { id, message, type, onConfirm }]); // ✅ 添加 onConfirm
+        },
+        [nextId]
+    );
 
     const handleRemove = (id: number) => {
         setToasts(prev => prev.filter(t => t.id !== id));
@@ -37,6 +40,7 @@ export const FixedToastProvider: React.FC<{ children: React.ReactNode }> = ({ ch
                             key={toast.id}
                             message={toast.message}
                             type={toast.type}
+                            onConfirm={toast.onConfirm}
                             offsetIndex={index}
                             onFinish={() => handleRemove(toast.id)}
                         />

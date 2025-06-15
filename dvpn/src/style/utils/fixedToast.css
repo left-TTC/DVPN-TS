@@ -4,26 +4,40 @@
 /* phone */
 @media (max-width: 600px){
     .fixedtoast{
+        width: 100vw;
+        height: 100vh;
         position: fixed; 
-        top: 460px; 
         display: flex;
-        width: 100%;
         justify-content: center;   
-
+        z-index: 300;
+        top: 0;
+        left: 0;    
     } 
+
+    .grayBackground{
+        width: 100%;
+        height: 100%;
+        background-color: gray;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.4); /* 黑色，40%透明度 */
+        backdrop-filter: blur(10px);           /* 背景模糊效果 */
+        -webkit-backdrop-filter: blur(8px); 
+    }
 
     .fixedtoastmessageblock{
         width: 86%;
         height: 180px;
         background-color: #1E1D23;
         border-radius: 10px;
-        box-shadow: 0 0 10px 1px black;
+        box-shadow: 0 0 4px 1px skyblue;
         position: absolute;
         transform: translateX(-50%) translateX(-400px);
         display: flex;
         flex-direction: column;
         padding: 10px;
         overflow: hidden;
+        top: 240px; 
+        z-index: 10;
     }
 
     .fixedtoastmessageblockcloseimg{
@@ -106,6 +120,12 @@
         color: darkgray;
     }
 
+    .okButtobBlock{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
     .fixedtoastmessageblockOK{
         background-color: white;
         height: 45px;
@@ -114,7 +134,21 @@
         justify-content: center;
     }
 
+    .fixedtoastmessageblockOK1{
+        background-color: white;
+        width: 44%;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .fixedtoastmessageblockOK h1{
+        color: black;
+        font-size: 20px;
+    }
+
+    .fixedtoastmessageblockOK1 h1{
         color: black;
         font-size: 20px;
     }

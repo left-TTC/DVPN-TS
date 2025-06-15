@@ -7,23 +7,19 @@ export interface QRcodeInfo{
     label: string
 }
 
-export function generateQRCodeTextAndLabel(): QRcodeInfo[] | []{
+export function generateQRCodeTextAndLabel(): QRcodeInfo | null{
     const invitationCode = getQueryVariable('j');
     if (!invitationCode){
-        return [];
+        return null;
     };
 
     const urlParams = new JsonD(invitationCode);
-    let returnInfo: QRcodeInfo[] = [];
+    const text = urlParams.serve[0] + '?r=' + urlParams.invitationCodes;
+    let returnInfo: QRcodeInfo = {
+        text: text,
+        label: urlParams.serve[0]
+    };
 
-    for(const serve of urlParams.serve){
-        const text = serve + '?r=' + urlParams.invitationCodes;
-        const serveInfo: QRcodeInfo = {
-            text: text,
-            label: serve,
-        } 
-        returnInfo.push(serveInfo)
-    }
 
     return returnInfo;
 }

@@ -16,14 +16,16 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useRef, useState } from "react";
 import { animate } from "animejs";
 import { generateInvitationLink } from "@/utils/generateInvitationLink";
-import { ToastTypes, useToast } from "@/context/toastProvider";
+import { useFixedToast } from "@/context/fixedToastProvider";
+import { FixedToastType, type Message } from "@/utils/fixedToast";
+import { turnToLinks } from "@/utils/turnToLinks";
 
 export interface howToInviteItem {
     img: string,
     title: string,
     way: string,
     link: string,
-    links: string,
+    links?: string,
 }
 
 const HowToInviteEffectively = () => {
@@ -33,7 +35,7 @@ const HowToInviteEffectively = () => {
     const observerRef = useRef<IntersectionObserver | null>(null)
     const [hasAnimated, setHasAnimated] = useState(false)
 
-    const toast = useToast()
+    const fixedToast = useFixedToast()
 
     useEffect(() => {
         const template = howToInviteRef.current
@@ -97,7 +99,6 @@ const HowToInviteEffectively = () => {
         title: t("orthers"),
         way: t("orthersway"),
         link: t("ortherslink"),
-        links: "aaaa"
     }
     content[5] = {
         img: telegram,
@@ -107,11 +108,23 @@ const HowToInviteEffectively = () => {
         links: "tg://"
     }
 
-    const copyShareAndOpenApp = (title: string) =>{
-        generateInvitationLink(t("invitatinwords"))
-        console.log(title)
-        if(title != "Others"){
-            toast(t("copy" ), ToastTypes.Success, 1000)
+    const copyShareAndOpenApp = async(title: string, links: string) =>{
+        const ifLinkOK = await generateInvitationLink(t("invitatinwords"))
+        if(ifLinkOK){
+            const OkMessage: Message = {
+                title: t("copy"),
+                content: t("whycopy"),
+                confirm: t("open"),
+                cancle: t("cancle")
+            }
+            fixedToast(OkMessage, FixedToastType.OK, ()=>{turnToLinks(links)})
+        }else{
+            const failMessage: Message = {
+                title: t("copyFail"),
+                content: t("whycopyfail"),
+                confirm: t("retry")
+            }
+            fixedToast(failMessage, FixedToastType.Error, ()=>{copyShareAndOpenApp(title, links)})
         }
     }
 
@@ -136,7 +149,9 @@ const HowToInviteEffectively = () => {
                                 </div>
                                 <h3 className="slideTitle">{item.title}</h3>
                                 <h4 className="siideText">{item.way}</h4>
-                                <a href={item.links} onClick={() => copyShareAndOpenApp(item.title)}>{item.link}</a>
+                                {item.links &&
+                                    <a onClick={() => copyShareAndOpenApp(item.title, item.links!)}>{item.link}</a>
+                                }
                             </div>
                         </SwiperSlide>
                     ))}

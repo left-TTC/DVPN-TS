@@ -17,7 +17,8 @@ export enum FixedToastType {
 export interface Message {
     title: string,
     content: string,
-    confirm: string
+    confirm: string,
+    cancle?: string
 }
 
 export interface FixedToastProps {
@@ -25,15 +26,16 @@ export interface FixedToastProps {
     type: FixedToastType,
     onFinish?: () => void;
     offsetIndex: number; // ✅ 接收 offsetIndex
+    onConfirm?: () => void;
 }
 
-const FixedToast: React.FC<FixedToastProps> = ({ message, type, onFinish, offsetIndex }) => {
+const FixedToast: React.FC<FixedToastProps> = ({ message, type, onFinish, offsetIndex, onConfirm }) => {
     const [ifShow, setIfShow] = useState(false)
     const [ifExit, setIfExit] = useState(false)
 
-    const fixedToast = useRef<HTMLDivElement | null>(null)
-
     const {t} = useTranslation()
+
+    const fixedToast = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
         setIfShow(true)
@@ -65,11 +67,16 @@ const FixedToast: React.FC<FixedToastProps> = ({ message, type, onFinish, offset
 
     const fixedToastOk = () => {
         setIfExit(true)
+        console.log("ready for confirm:", onConfirm)
+        if(onConfirm){
+            onConfirm()
+        }
     }
 
     let content;
     switch (type) {
         case FixedToastType.OK:
+            console.log("fixtoast")
             content = (
                 <div className="fixedtoastmessageblock" ref={fixedToast}>
                     <div className="fixedtoastmessageblockglow green" />
@@ -84,9 +91,14 @@ const FixedToast: React.FC<FixedToastProps> = ({ message, type, onFinish, offset
                             <h2>{message.content}</h2>
                         </div>
                     </div>
-                    <button className="fixedtoastmessageblockOK" onClick={fixedToastOk}>
-                        <h1>{t("done")}</h1>
-                    </button>
+                    <div className="okButtobBlock">
+                        <button className="fixedtoastmessageblockOK1" onClick={fixedToastOk}>
+                            <h1>{message.confirm}</h1>
+                        </button>
+                        <button className="fixedtoastmessageblockOK1" onClick={() => setIfExit(true)}>
+                            <h1>{message.cancle? message.cancle : t("exit")}</h1>
+                        </button>
+                    </div>
                 </div>
             )
             break
@@ -116,6 +128,7 @@ const FixedToast: React.FC<FixedToastProps> = ({ message, type, onFinish, offset
     return (
         <div className="fixedtoast">
             {content}
+            <div className="grayBackground" />
         </div>
     )
 }

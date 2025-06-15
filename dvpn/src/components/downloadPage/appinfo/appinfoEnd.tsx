@@ -9,18 +9,37 @@ import { useTranslation } from "react-i18next";
 import { copyShare } from "@/utils/copyShare";
 import { downloadDVPN } from "@/utils/downloadApk";
 import { readVersionCode } from "@/utils/getVersion";
+import { useFixedToast } from "@/context/fixedToastProvider";
+import { FixedToastType, type Message } from "@/utils/fixedToast";
 
 const AppInfoEnd = () => {
     const { t } = useTranslation();
+    const fixedToast = useFixedToast()
 
     const appInfoEndRef = useRef<HTMLDivElement | null>(null)
     const [hasAnimated, setHasAnimated] = useState(false);
     const observerRef = useRef<IntersectionObserver | null>(null);
 
     const download = () => {
-        copyShare();
-        downloadDVPN();
-    }
+            const copyOk = copyShare();
+            if(copyOk){
+                const copyOKMessage: Message = {
+                    title: t("download"),
+                    content: t("suredownload"),
+                    confirm: t("yes"),
+                    cancle: t("cancle")
+                }
+                fixedToast(copyOKMessage, FixedToastType.OK, ()=>{downloadDVPN();})
+            }else{
+                const copyFailMessage: Message = {
+                    title: t("copycodefail"),
+                    content: t("whycannot"),
+                    confirm: t("ok")
+                }
+                fixedToast(copyFailMessage, FixedToastType.Error)
+            }
+            
+        }
 
     useEffect(() => {
         if (appInfoEndRef.current){

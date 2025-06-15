@@ -6,40 +6,16 @@
     .QRcodeGenerator{
         display: flex;
         flex-direction: column;
-        justify-content: center;
         text-align: center;
-        margin-top: 60px;
+        margin-top: 80px;
         width: auto;
-    }
-
-    .QRcodeGenerator h1{
-        color: white;
-        font-size: 32px;
-    }
-
-    .QRcodeGenerator h3{
-        color: white;
-        margin-top: 0;
-        font-weight: 400;
-    }
-
-    .QRcodeGenerator h4{
-        color: white;
-        margin-top: -10px;
-        font-weight: 300;
-    }
-
-    .QRcodeGenerator h2{
-        color: white;
-        margin-top: -10px;
-        font-weight: 300;
-        font-size: 15px;
     }
 
     .QRContainer {
         width: 380px;
         border-radius: 20px;
-        height: 250px;
+        margin-top: 0px;
+        text-align: center;
     }
     .QRContainer::-webkit-scrollbar {
         display: none;
@@ -48,11 +24,15 @@
     .QROne{
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
         background-color: #141414;
-        border-radius: 40px;
+        border-radius: 25px;
         margin-top: 60px;
+        height: 580px;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 6px 6px 3px black;
     }
 
     .QROne p{
@@ -64,15 +44,14 @@
     .domaintypeblock{
         -webkit-tap-highlight-color: transparent;
         width: 80%;
-        height: 60px;
+        height: 70px;
         border-radius: 20px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        gap: 10px;
         background: linear-gradient(to right, #08BBFF, #2A76FF);
-        top: 30px;
-        position: absolute;
         border: none;
     }
     .domaintypeblock:focus{
@@ -81,30 +60,149 @@
     .domaintypeblock:active {
         background: linear-gradient(to right, #873dee, #002aff);
     }
-    .QRcodescreenshotintroduce{
+
+    .domaintypeblock h1{
+        font-size: 20px;
+        color: white;
+    }
+
+
+    .iconBlcok{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        top: -15px;
     }
 
-    .QRcodescreenshotintroduce h1{
-        font-size: 15px;
-        font-weight: 400!important;
+    .dvpnIconOnQR{
+        width: 60px;
+        height: 60px;
     }
 
-    .QRContainer h1{
-        font-size: 16px;
-        font-weight: 200;
+    .iconBlcok h4{
+        font-size: 21px;
+        color: white;
+        font-weight: 600;
+        padding: 0;
+        z-index: 10;
     }
 
-    .QRContainer h2{
-        font-size: 16px;
-        font-weight: 200;
+    .wordblock h1{
+        text-align: left;
+        font-size: 14px;
+        color: white;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.2;
+        width: 100%;
+        
     }
 
-    .QRContainer h3{
-        font-size: 16px;
-        font-weight: 200;
-        margin-top: -13px;
+    .wordblock h2{
+        font-size: 14px;
+        color: white;
+        text-align: left;
+        margin: 0;
+        padding-top: 5px;
+        line-height: 1.2;
     }
 
+    .wordblock h3{
+        font-size: 14px;
+        margin-top: -5px;
+        color: white;
+        text-align: left;
+        line-height: 1.2;
+        padding-top: 5px;
+        width: 100%;
+        margin: 0;
+    }
+
+    .wordblock h5{
+        font-size: 20px;
+        margin: 0;
+        font-weight: 900;
+        color: white;
+        margin-top: 5px;
+        margin-right: 20px;
+    }
+    
+    .wordblock{
+        margin-left: 10px;
+        margin-top: 45px;
+        width: 100%;
+        margin-bottom: 10px;
+        z-index: 10;
+    }
+
+    .chinese h3{
+        font-size: 20px!important;
+        margin-top: 3px;
+    }
+
+    .chinese h2{
+        font-size: 20px!important;
+        margin-top: 3px;
+    }
+
+    .chinese h1{
+        font-size: 20px!important;
+    }
+
+    .chinese h5{
+        font-size: 27px!important;
+        margin-top: 8px;
+    }
+
+    .QRglow{
+        width: 620px;
+        height: 360px;
+        position: absolute;
+        border-radius: 50%;
+        z-index: 0;
+        top: -120px;
+        left: -300px;
+        opacity: 0.25;
+        filter: blur(80px);
+    }
+
+    .blueglow{
+        background-color: #2B83C9;
+    }
+
+    .redglow{
+        background-color: rgb(235, 147, 147);
+    }
+
+    .greenglow{
+        background-color: rgb(202, 246, 135);
+    }
+
+    .purpleglow{
+        background-color: rgb(122, 49, 196);
+    }
+
+    .yellowglow{
+        background-color: rgb(240, 237, 165);
+    }
+
+    .whiteglow{
+        background-color: white;
+    }
+
+    .qrbox{
+        background-color: white;
+        margin-bottom: 40px;
+        padding: 20px;
+        border-radius: 20px;
+        z-index: 10;
+    }
+
+    .QRCodeCanvas{
+        
+    }
 }

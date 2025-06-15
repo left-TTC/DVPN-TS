@@ -37,14 +37,7 @@ export async function generateInvitationLink(invitationSub: string): Promise<boo
 
     const invitationCodes = urlParams.invitationCodes;
 
-    let links: string = "";
-    for(const serve of urlParams.serve){
-        if(urlParams.serve.indexOf(serve) === 0){
-            links = invitationSub + serve + '#/?r=' + invitationCodes
-        }else{
-            links += '\n' + '👉 ' +  serve + '#/?r=' +  invitationCodes
-        }
-    }
+    let links: string = invitationSub + urlParams.serve[0] + '#/?r=' + invitationCodes;
 
     try {
         if (navigator.clipboard && navigator.clipboard.writeText) {

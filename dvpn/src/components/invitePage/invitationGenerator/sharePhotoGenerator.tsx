@@ -1,28 +1,22 @@
 import type React from "react"
 import "@/style/components/invitePage/QRcodeGenerator/sharePhotoGenerator.css"
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react"
-import DVPN from "@/assets/dvpn.png"
 import { generateInvitationImg } from "@/utils/generateInviteImg"
 import { ChooseLanguageType } from "../invitationGenerator"
-import { ToastTypes, useToast } from "@/context/toastProvider"
 import i18next from "i18next"
 
 export interface receiveQRProps {
     QrRef: React.RefObject<HTMLCanvasElement> | null
     languageType: ChooseLanguageType
-    canChangeLanguage: boolean
-    setCanChangeLanguage: React.Dispatch<React.SetStateAction<boolean>>
+    TemplateRef: React.RefObject<HTMLDivElement | null>
 }
 
 export interface SharePhotoGeneratorRef {
     getSharePhoto: () => void
-    canGeneratePhoto: boolean
-    changeGenerateStatus: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const SharePhotoGenerator = forwardRef<SharePhotoGeneratorRef, receiveQRProps>(
-    ({ QrRef, languageType, canChangeLanguage, setCanChangeLanguage }, ref) => {
-        const toast = useToast()
+    ({ QrRef, languageType, TemplateRef }, ref) => {
         const [t, setT] = useState<(key: string) => string>(() => (key: string) => key)
 
         const switchLanguage = async (lan: ChooseLanguageType) => {
@@ -53,76 +47,59 @@ const SharePhotoGenerator = forwardRef<SharePhotoGeneratorRef, receiveQRProps>(
         }
 
         useEffect(() => {
-            switchLanguage(languageType).then(setCanChangeLanguage)
+            switchLanguage(languageType)
         }, [languageType])
 
         const html2Ref = useRef<HTMLDivElement | null>(null)
 
         useImperativeHandle(ref, () => ({
             getSharePhoto: () => {
-                if (canChangeLanguage) {
-                    generateInvitationImg(html2Ref.current)
-                } else {
-                    toast(t("chooselanguagefrist"), ToastTypes.Error, 1000)
-                }
-            },
-            canGeneratePhoto: canChangeLanguage,
-            changeGenerateStatus: setCanChangeLanguage,
+                generateInvitationImg(html2Ref.current)
+            }
         }))
 
-        const qrContainerRef = useRef<HTMLDivElement | null>(null)
+        const posterRef = useRef<HTMLDivElement | null>(null)
 
         useEffect(() => {
-            if (QrRef?.current && qrContainerRef.current) {
-                qrContainerRef.current.innerHTML = ""
+            console.log("template:", TemplateRef.current)
+            if (QrRef?.current  && posterRef.current && TemplateRef.current) {
+                posterRef.current.innerHTML = "";
 
-                const image = new Image()
-                image.src = QrRef.current.toDataURL("image/png")
-                image.style.width = "240px"
-                image.style.height = "240px"
-                image.style.margin = "auto"
-                image.style.marginTop = "5px"
+                const clone = TemplateRef.current.cloneNode(true) as HTMLElement;
+                const glow = clone.querySelector(".glowSelect")
+                if(glow?.innerHTML){
+                    glow.innerHTML = ""
+                }
 
-                const label = document.createElement("div")
-                label.innerText = t("scantodownload")
-                label.style.marginTop = "12px"
-                label.style.fontSize = "14px"
-                label.style.fontWeight = "500"
-                label.style.textAlign = "center"
-                label.style.color = "#08BBFF"
-                label.style.marginTop = "3px"
+                const qrPlaceholder = clone.querySelector(".qrbox") as HTMLElement;
+                const canvas = QrRef.current;
+                const dataURL = canvas.toDataURL("image/png");
 
-                qrContainerRef.current.appendChild(label)
-                qrContainerRef.current.appendChild(image)
+                const img = new Image();
+                img.src = dataURL;
+                img.alt = "QR Code";
+                img.style.width = "250px";
+                img.style.height = "250px";
+
+                if (qrPlaceholder) {
+                    qrPlaceholder.innerHTML = ""; 
+                    Object.assign(qrPlaceholder.style, {
+                        marginBottom: "40px",
+                        backgroundColor: "white",
+                        padding: "20px",
+                        borderRadius: "30px",
+                });
+                    qrPlaceholder.appendChild(img);
+                }
+                posterRef.current.appendChild(clone);
+                posterRef.current.style.width = "96%"
+                posterRef.current.style.margin = "0"
             }
-        }, [QrRef, t])
+        }, [QrRef, t, TemplateRef])
 
         return (
             <div className="SharePhotoGeneratorBox" ref={html2Ref}>
-                <div className="introduceBox p2p">
-                    <h1 className="p2pcommunication">{t("p2pcommunication")}</h1>
-                    <div className="Dot blue" />
-                </div>
-                <div className="introduceBox break">
-                    <div className="Dot green" />
-                    <h1 className="breakNetwork">{t("breakNetwork")}</h1>
-                </div>
-                <div className="introduceBox local">
-                    <h1 className="breakNetwork">{t("breakelocal")}</h1>
-                    <div className="Dot red" />
-                </div>
-                <div className="introduceBox safe">
-                    <div className="Dot purple" />
-                    <h1 className="breakNetwork">{t("saferAndStable")}</h1>
-                </div>
-                <div className="sharePhotoTitle">
-                    <div className="DVPNBox">
-                        <img src={DVPN} className="sharePhotoDvpn" />
-                        <h1 className="sharePhotoDVPN">D-VPN</h1>
-                    </div>
-                    <h2>——{t("theworldsfrist..")}</h2>
-                </div>
-                <div ref={qrContainerRef} className="sharePhotoQRcodeContainer" />
+                <div ref={posterRef}/>
             </div>
         )
     }

@@ -13,7 +13,6 @@ import { generateInvitationLink } from "@/utils/generateInvitationLink"
 import QRcodeGenerator from "@/components/invitePage/invitationGenerator/QRcodeGennerator"
 import { useInviteContext } from "@/pages/invite"
 import { animate } from "animejs"
-import LanguageChooser from "./invitationGenerator/languageChooser"
 import { useFixedToast } from "@/context/fixedToastProvider"
 import { FixedToastType, type Message } from "@/utils/fixedToast"
 
@@ -37,7 +36,6 @@ const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDow
     const fixedToast = useFixedToast()
 
     const [ifLinkOk, setIfLinkOk] = useState(false)
-    const [chooseLanguage, setChooseLanguage] = useState<ChooseLanguageType>(ChooseLanguageType.None)
 
     const generateLink = async() => {
         const copyRes = await generateInvitationLink(t("invitatinwords"))
@@ -50,10 +48,12 @@ const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDow
                 content: t("youhavecopied"),
                 confirm: t("done"),
             }
-            fixedToast(copyMessage, FixedToastType.OK)
+            fixedToast(copyMessage, FixedToastType.OK, )
             setTimeout(() => {
                 setIfLinkOk(false)
             }, 4000)
+        }else{
+            
         }
     }
 
@@ -61,8 +61,6 @@ const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDow
     const {ifShowQRCode} = useInviteContext()
     const loadRef = useRef<HTMLImageElement | null>(null)
     const QRRef = useRef<HTMLDivElement | null>(null)
-
-    const [ifChooseQrLanguage, setIfChooseQrLanguage] = useState(false)
 
     useEffect(() => {
         if(ifDrawingQRcode){
@@ -130,11 +128,8 @@ const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDow
                 }
             </button>
             <div className="InvitationGeneratorQRblock" ref={QRRef}>
-                <QRcodeGenerator ifdrawing={ifDrawingQRcode} setDrawingState={setIfDrawingQRcode} openChooseBlock={setIfChooseQrLanguage} languageType={chooseLanguage}/>
+                <QRcodeGenerator ifdrawing={ifDrawingQRcode} setDrawingState={setIfDrawingQRcode}/>
             </div>
-            {ifChooseQrLanguage &&
-                <LanguageChooser closeChooseBlock={setIfChooseQrLanguage} chooseLanguage={setChooseLanguage}/>
-            }
         </div>
     )
 
