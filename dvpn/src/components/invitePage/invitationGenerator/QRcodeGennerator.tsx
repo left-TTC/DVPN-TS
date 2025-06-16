@@ -22,12 +22,11 @@ import { FixedToastType, type Message } from "@/utils/fixedToast";
 import SharePhotoGenerator, { type SharePhotoGeneratorRef } from "./sharePhotoGenerator";
 
 import dvpn from "@/assets/dvpn.png"
+import { DeviceType } from "@/utils/checkWhatDevice";
 
 export interface QRcodeGeneratorProps {
     ifdrawing: boolean;
     setDrawingState: React.Dispatch<React.SetStateAction<boolean>>;
-    // openChooseBlock: React.Dispatch<SetStateAction<boolean>>;
-    // languageType: ChooseLanguageType;
 }
 
 const enumToLng = (lang: ChooseLanguageType): string => {
@@ -136,6 +135,14 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({
         return usingLan === ChooseLanguageType.Chinese
     }
 
+    const ifArabic = (usingLan: ChooseLanguageType) => {
+        return usingLan === ChooseLanguageType.Arabic
+    }
+
+    const ifEnglish = (usingLan: ChooseLanguageType) => {
+        return usingLan === ChooseLanguageType.English
+    }
+
     const colors = ["redglow", "greenglow", "blueglow", "purpleglow", "yellowglow", "whiteglow"];
     const [shuffledColors, setShuffledColors] = useState<string[]>([]);
 
@@ -165,42 +172,97 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({
 
     const QRgeneratorRef = useRef<HTMLDivElement | null>(null)
 
+    const [slidesPerView, setSlidersPerView] = useState(1.1)
+    const [spaceBetween, setSpaceBetween] = useState(20)
+    const [qrsize, setQrsizer] = useState(250)
+
+    const [currentDeviceType, setCurrentDeviceType] = useState(() => {
+        // 初始判断设备类型
+        const screenWidth = window.innerWidth;
+        if (screenWidth < 768) return DeviceType.Phone;
+        if (screenWidth >= 768 && screenWidth < 1550) return DeviceType.QR;
+        if (screenWidth >= 1550 ) return DeviceType.Computer;
+    });
+        
+    useEffect(() => {
+        const handleResize = () => {
+            const screenWidth = window.innerWidth;
+            let newDevice;
+            if (screenWidth < 768) {
+                newDevice = DeviceType.Phone;
+            } else if (screenWidth >= 768 && screenWidth < 1550) {
+                newDevice = DeviceType.QR;
+            } else {
+                newDevice = DeviceType.Computer
+            }
+            if (newDevice !== currentDeviceType) {
+                setCurrentDeviceType(newDevice);
+                console.log("Device type changed to:", newDevice);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [currentDeviceType]);
+
+    useEffect(() => {
+        console.log("Configuration updated for device:", currentDeviceType);
+        if (currentDeviceType !== DeviceType.Phone) {
+            setSlidersPerView(1.5);
+            setSpaceBetween(120);
+            setQrsizer(320);
+            if (currentDeviceType === DeviceType.QR) {
+                setQrsizer(250);
+            }
+        } else {
+            setSlidersPerView(1.1);
+            setSpaceBetween(20);
+            setQrsizer(250);
+        }
+    }, [currentDeviceType]);
+
     return (
         <div className="QRcodeGenerator"> 
             <div className="QRContainer">
                 <Swiper
                     modules={[Pagination]}
-                    spaceBetween={20}
-                    slidesPerView={1.1}
+                    spaceBetween={spaceBetween}
+                    slidesPerView={slidesPerView}
                     pagination={{ clickable: true }}
                     loop={true}
                     centeredSlides={true}
-                    style={{ paddingBottom: "80px" }}
+                    className="swiper"
                     onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                 >
                     {nowLanguageLists.map((lang, index) => (
                         <SwiperSlide key={lang} >
                             <div className="QROne"  ref={QRgeneratorRef}>
-                                <div className="glowSelect">
-                                    <div className={`QRglow ${shuffledColors[index]}`} />
-                                </div>
-                                <div className="iconBlcok">
-                                    <img src={dvpn} className="dvpnIconOnQR"/>
-                                    <h4>{t("devpn", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h4>
-                                </div>
-                                
-                                <div className={`wordblock ${ifChinese(nowLanguageLists[activeIndex])? 'chinese':``}`}>
-                                    <h1>•{t("mobliephone", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h1>
-                                    <h2>•{t("moreinvite", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h2>
-                                    <h3>•{t("realphone", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h3>
-                                    <h2>•{t("moreinvite", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h2>
-                                    <h3>•{t("makeyoubetternetwork", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h3>
-                                    <h5>{t("completelyFree", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h5>
+                                <div className="computerstyle3">
+                                    <div className="glowSelect">
+                                        <div className={`QRglow ${shuffledColors[index]}`} />
+                                    </div>
+                                    <div className="iconBlcok">
+                                        <img src={dvpn} className="dvpnIconOnQR"/>
+                                        <h4>{t("devpn", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h4>
+                                    </div>
+                                    
+                                    <div className={`wordblock ${ifChinese(nowLanguageLists[activeIndex])? 'chinese':``} ${ifArabic(nowLanguageLists[activeIndex])? 
+                                        'arabic' : '' } ${ifEnglish(nowLanguageLists[activeIndex])? 'english':``}`}>
+                                        <h1>•{t("mobliephone", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h1>
+                                        <h2>•{t("moreinvite", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h2>
+                                        <h3>•{t("realphone", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h3>
+                                        <h2>•{t("moreinvite", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h2>
+                                        <h3>•{t("makeyoubetternetwork", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h3>
+                                        <h5>{t("completelyFree", { lng: enumToLng(nowLanguageLists[activeIndex]) })}</h5>
+                                    </div>
                                 </div>
                                 <div className="qrbox">
                                     <QRCodeCanvas
                                         value={originalContext!.text}
-                                        size={250}
+                                        size={qrsize}
                                         level="H"
                                         className="QRCodeCanvas"
                                         ref={(el) => {

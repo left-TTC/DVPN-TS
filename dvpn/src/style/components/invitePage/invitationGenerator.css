@@ -4,7 +4,7 @@
 @media (max-width: 600px){
     .InvitationGenerator{
         display: flex;
-        height: 1250px;
+        height: 1280px;
         overflow: hidden;
         flex-direction: column;
         align-items: center;
@@ -109,5 +109,115 @@
 
     .InvitationGeneratorQRblock{
         opacity: 0;
+    }
+
+    .computerstyle{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .computerstyle1{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (min-width: 601px){
+    .InvitationGenerator{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        margin-top: 180px;
+    }
+
+    .Inbackimg{
+        position: absolute;
+        display: none;
+    }
+
+    .InvitationGeneratorTitle{
+        color: white;
+    }
+
+    .computerstyle{
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+    }
+
+    .computerstyle1{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .InvitationGeneratorTitlegenerateQRcode{
+        display: flex ;
+        flex-direction: row;
+        font-size: 5px;
+        width: 80%;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 8%;
+        border-radius: 5px;
+        height: 60px;
+        padding: 6px;
+        background: linear-gradient(to right, #08BBFF, #2A76FF);
+        border: none;
+        color: white;  
+        min-width: 300px;
+    }
+
+    .InvitationGeneratorTitlecopyinvitationcodes{
+        display: flex ;
+        flex-direction: row;
+        font-size: 6px;
+        min-width: 300px;
+        width: 80%;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 12%;
+        border-radius: 5px;
+        height: 60px;
+        background: linear-gradient(to right, #08BBFF, #2A76FF);
+        border: none;
+        color: white;
+        outline: none;
+    }
+
+    .copyinvitationcodesimg{
+        width: 50px;
+    }
+
+    .invitationOKimg{
+        width: 50px;
+        transform: rotate(-10deg);
+    }
+
+    .invitationOKimg2{
+        width: 50px;
+        transform: rotate(-10deg); 
+    }
+
+    .generateQRcode{
+        width: 36px;
+    }
+
+    .InvitationGeneratorQRblock{
+        width: 100%;
+        margin-top: 50px;
+        opacity: 1;
+    }
+}
+
+@media (601px < width < 836px){
+    .computerstyle{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
 }

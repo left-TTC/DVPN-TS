@@ -24,7 +24,7 @@ const InvitationIntroduce: React.FC<IntroduceProps> = ({setDown}) => {
             if(page){
                 animate(page, {
                     duration: 1200,
-                    translateY: 850,
+                    translateY: 890,
                     easing: 'easeInOutQuad',
                 })
                 setDown(true)

@@ -153,3 +153,154 @@
         font-size: 20px;
     }
 }
+
+@media (min-width: 601px){
+    .fixedtoast{
+        width: 100vw;
+        height: 100vh;
+        position: fixed; 
+        display: flex;
+        justify-content: center;   
+        z-index: 300;   
+    } 
+
+    .grayBackground{
+        width: 100%;
+        height: 100%;
+        background-color: gray;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.4); /* 黑色，40%透明度 */
+        backdrop-filter: blur(10px);           /* 背景模糊效果 */
+        -webkit-backdrop-filter: blur(8px); 
+    }
+
+    .fixedtoastmessageblock{
+        width: 700px;
+        height: 380px;
+        background-color: #1E1D23;
+        border-radius: 10px;
+        box-shadow: 0 0 4px 1px skyblue;
+        position: absolute;
+        transform: translateY(300px);
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        overflow: hidden;
+        z-index: 10;
+        opacity: 0;
+    }
+
+    .fixedtoastmessageblockcloseimg{
+        width: 20px;
+        margin-left: auto;
+        z-index: 1;
+    }
+
+    .fixedtoastmessageblockglow{
+        position: absolute;
+        width: 800px;
+        height: 400px;
+        border-radius: 50%;
+        bottom: 140px;
+        left: 80px;
+    }
+
+    .green{
+        background-color: #256961;
+        z-index: -1;
+        opacity: 0.6;
+        filter: blur(40px);
+    }
+
+    .red{
+        background-color: #f63b26;
+        z-index: -1;
+        opacity: 0.6;
+        filter: blur(40px);
+    }
+
+    .fixedtoastmessageblockintroduce{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: -12px;
+        height: 260px;
+    }
+
+    .rightblackbox{
+        background-color: #36E8A0;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .errorblackbox{
+        background-color: #FB719E;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rightblack{
+        width: 80px;
+    }
+
+    .errorblack{
+        width: 40px;
+    }
+    
+    .fixedtoastmessageblockwords{
+        width: 76%;
+    }
+
+    .fixedtoastmessageblockwords h1{
+        font-size: 30px;
+        color: white;
+    }
+
+    .fixedtoastmessageblockwords h2{
+        font-size: 23px;
+        color: darkgray;
+    }
+
+    .okButtobBlock{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 30px;
+    }
+
+    .fixedtoastmessageblockOK{
+        background-color: white;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .fixedtoastmessageblockOK1{
+        background-color: white;
+        width: 44%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .fixedtoastmessageblockOK h1{
+        color: black;
+        font-size: 20px;
+    }
+
+    .fixedtoastmessageblockOK1 h1{
+        color: black;
+        font-size: 20px;
+    }
+}

@@ -8,6 +8,7 @@ import close from "@/assets/close.svg"
 import right from "@/assets/right.svg"
 import error from "@/assets/error-fill.svg"
 import { useTranslation } from "react-i18next";
+import { checkWhatDevice, DeviceType } from "./checkWhatDevice";
 
 export enum FixedToastType {
     Error,
@@ -25,13 +26,19 @@ export interface FixedToastProps {
     message: Message,
     type: FixedToastType,
     onFinish?: () => void;
-    offsetIndex: number; // ✅ 接收 offsetIndex
+    offsetIndex: number;
     onConfirm?: () => void;
+}
+
+export enum StartDirection{
+    Up,
+    Left,
 }
 
 const FixedToast: React.FC<FixedToastProps> = ({ message, type, onFinish, offsetIndex, onConfirm }) => {
     const [ifShow, setIfShow] = useState(false)
     const [ifExit, setIfExit] = useState(false)
+    const [startdirection, setStartdirection] = useState<StartDirection>(StartDirection.Left)
 
     const {t} = useTranslation()
 
@@ -42,25 +49,57 @@ const FixedToast: React.FC<FixedToastProps> = ({ message, type, onFinish, offset
     }, [message])
 
     useEffect(() => {
+        const nowDevice = checkWhatDevice()
+        if(nowDevice === DeviceType.Computer){
+            setStartdirection(StartDirection.Up)
+        }else{
+            setStartdirection(StartDirection.Left)
+        }
+    },[checkWhatDevice()])
+
+    useEffect(() => {
         const thisFixedToast = fixedToast.current
         if (thisFixedToast && ifShow) {
-            animate(thisFixedToast, {
-                translateX: [-400, 0 - offsetIndex * 28],
-                translateY: [0, 0 -offsetIndex * 16],
-                duration: 500
-            })
+            if(startdirection === StartDirection.Left){
+                animate(thisFixedToast, {
+                    translateX: [-400, 0],
+                    duration: 500,
+                    easing: 'easeOutQuad',
+                })
+            }else{
+                animate(thisFixedToast, {
+                    duration: 200,
+                    opacity: [0,1],
+                    easing: 'easeOutQuad',
+                })
+            }
         }
         if (thisFixedToast && ifExit) {
-            animate(thisFixedToast, {
-                translateX: [0 - offsetIndex * 36, 400],
-                duration: 500,
-                complete: () => {
-                    setIfShow(false);
-                    setTimeout(() => {
-                        onFinish?.();
-                    }, 500)
-                },
-            })
+            if(startdirection === StartDirection.Left){
+                animate(thisFixedToast, {
+                    translateX: [0, 400],
+                    duration: 500,
+                    easing: 'easeOutQuad',
+                    complete: () => {
+                        setIfShow(false);
+                        setTimeout(() => {
+                            onFinish?.();
+                        }, 500)
+                    },
+                })
+            }else{
+                animate(thisFixedToast, {
+                    duration: 300,
+                    opacity: [1,0],
+                    easing: 'easeOutQuad',
+                    complete: () => {
+                        setIfShow(false);
+                        setTimeout(() => {
+                            onFinish?.();
+                        }, 500)
+                    },
+                })
+            }
             setIfExit(false)
         }
     }, [ifExit, ifShow, offsetIndex]) 

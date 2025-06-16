@@ -102,31 +102,34 @@ const InvitationGenerator: React.FC<InvitationGeneratorProps> = ({ifIntroduceDow
         <div className="InvitationGenerator">
             <div className="Inbackimg" />
 
-            <div className="InvitationGeneratorTitle">
-                <h1>{t("inviteortheruser")}</h1>
-                <h2>{t("getmorenodes")}</h2>
+            <div className="computerstyle">
+                <div className="InvitationGeneratorTitle">
+                    <h1>{t("inviteortheruser")}</h1>
+                    <h2>{t("getmorenodes")}</h2>
+                </div>
+                <div className="computerstyle1">
+                    <button className="InvitationGeneratorTitlecopyinvitationcodes" onClick={() => generateLink()}>
+                        <h1>{t("generateinvitationlick")}</h1>
+                        {!ifLinkOk? (
+                            <img src={link} className="copyinvitationcodesimg"/>
+                        ):(
+                            <img src={OK} className="invitationOKimg"/>
+                        )}
+                    </button>
+                    <button className="InvitationGeneratorTitlegenerateQRcode" onClick={() => generateQRcode()}>
+                        <h1>{t("generateinvitationQR")}</h1>
+                        {!ifDrawingQRcode && !ifShowQRCode &&
+                            <img src={QR} className="generateQRcode"/>
+                        }
+                        {ifDrawingQRcode && !ifShowQRCode &&
+                            <img ref={loadRef} src={loading} className="invitationOKimg2"/>
+                        }
+                        {!ifDrawingQRcode && ifShowQRCode &&
+                            <img src={OK} className="invitationOKimg2"/>
+                        }
+                    </button>
+                </div>
             </div>
-
-            <button className="InvitationGeneratorTitlecopyinvitationcodes" onClick={() => generateLink()}>
-                <h1>{t("generateinvitationlick")}</h1>
-                {!ifLinkOk? (
-                    <img src={link} className="copyinvitationcodesimg"/>
-                ):(
-                    <img src={OK} className="invitationOKimg"/>
-                )}
-            </button>
-            <button className="InvitationGeneratorTitlegenerateQRcode" onClick={() => generateQRcode()}>
-                <h1>{t("generateinvitationQR")}</h1>
-                {!ifDrawingQRcode && !ifShowQRCode &&
-                    <img src={QR} className="generateQRcode"/>
-                }
-                {ifDrawingQRcode && !ifShowQRCode &&
-                    <img ref={loadRef} src={loading} className="invitationOKimg2"/>
-                }
-                {!ifDrawingQRcode && ifShowQRCode &&
-                    <img src={OK} className="invitationOKimg2"/>
-                }
-            </button>
             <div className="InvitationGeneratorQRblock" ref={QRRef}>
                 <QRcodeGenerator ifdrawing={ifDrawingQRcode} setDrawingState={setIfDrawingQRcode}/>
             </div>
