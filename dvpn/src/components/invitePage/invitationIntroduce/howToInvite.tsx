@@ -19,6 +19,7 @@ import { generateInvitationLink } from "@/utils/generateInvitationLink";
 import { useFixedToast } from "@/context/fixedToastProvider";
 import { FixedToastType, type Message } from "@/utils/fixedToast";
 import { turnToLinks } from "@/utils/turnToLinks";
+import { DeviceType } from "@/utils/checkWhatDevice";
 
 export interface howToInviteItem {
     img: string,
@@ -64,6 +65,37 @@ const HowToInviteEffectively = () => {
             observerRef.current?.disconnect();
         };
     },[])
+
+    const [currentDeviceType, setCurrentDeviceType] = useState(() => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth < 768) return DeviceType.Phone;
+            if (screenWidth >= 768 && screenWidth < 1550) return DeviceType.QR;
+            if (screenWidth >= 1550 ) return DeviceType.Computer;
+        });
+            
+    useEffect(() => {
+        const handleResize = () => {
+            const screenWidth = window.innerWidth;
+            let newDevice;
+            if (screenWidth < 768) {
+                newDevice = DeviceType.Phone;
+            } else if (screenWidth >= 768 && screenWidth < 1550) {
+                newDevice = DeviceType.QR;
+            } else {
+                newDevice = DeviceType.Computer
+            }
+            if (newDevice !== currentDeviceType) {
+                setCurrentDeviceType(newDevice);
+                console.log("Device type changed to:", newDevice);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [currentDeviceType]);
 
     let content: howToInviteItem[] = []
     content[0] = {
@@ -128,6 +160,15 @@ const HowToInviteEffectively = () => {
         }
     }
 
+    const [sliderPerview, setSliderPerview] = useState(1.3)
+    useEffect(() => {
+        if(currentDeviceType === DeviceType.Phone){
+            setSliderPerview(1.3)
+        }else{
+            setSliderPerview(2)
+        }
+    },[currentDeviceType])
+
     return(
         <div className="HowToInviteEffectively" ref={howToInviteRef}>
             <h1 >{t("howtoinvite")}</h1>
@@ -135,7 +176,7 @@ const HowToInviteEffectively = () => {
                 <Swiper
                     modules={[Pagination]}
                     spaceBetween={30}
-                    slidesPerView={1.3}
+                    slidesPerView={sliderPerview}
                     pagination={{ clickable: true }}
                     loop={true}
                     centeredSlides={true}
