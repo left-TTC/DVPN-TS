@@ -13,8 +13,38 @@
         background-color: #171D25; 
         align-items: center;
         padding: 0 10px 10px 10px;
-        
     }
 
 
+}
+
+@media (min-width: 601px){
+    .SharePhotoGeneratorBox{
+        margin: 0;
+        position: absolute;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        background-color: #171D25; 
+        align-items: center;
+        padding: 0 10px 10px 10px;
+        top: -10000px;
+    }
+}
+
+@media (2100px< width){
+    .SharePhotoGeneratorBox{
+        margin: 0;
+        margin-top: 100px;
+        width: 70%;
+        height: auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        background-color: #171D25; 
+        align-items: center;
+        padding: 0 10px 10px 10px;
+    }
 }

@@ -9,6 +9,7 @@ export interface receiveQRProps {
     QrRef: React.RefObject<HTMLCanvasElement> | null
     languageType: ChooseLanguageType
     TemplateRef: React.RefObject<HTMLDivElement | null>
+    QrSize: number
 }
 
 export interface SharePhotoGeneratorRef {
@@ -16,7 +17,7 @@ export interface SharePhotoGeneratorRef {
 }
 
 const SharePhotoGenerator = forwardRef<SharePhotoGeneratorRef, receiveQRProps>(
-    ({ QrRef, languageType, TemplateRef }, ref) => {
+    ({ QrRef, languageType, TemplateRef, QrSize }, ref) => {
         const [t, setT] = useState<(key: string) => string>(() => (key: string) => key)
 
         const switchLanguage = async (lan: ChooseLanguageType) => {
@@ -78,8 +79,8 @@ const SharePhotoGenerator = forwardRef<SharePhotoGeneratorRef, receiveQRProps>(
                 const img = new Image();
                 img.src = dataURL;
                 img.alt = "QR Code";
-                img.style.width = "250px";
-                img.style.height = "250px";
+                img.style.width = `${QrSize}px`;
+                img.style.height = `${QrSize}px`;
 
                 if (qrPlaceholder) {
                     qrPlaceholder.innerHTML = ""; 
@@ -94,6 +95,11 @@ const SharePhotoGenerator = forwardRef<SharePhotoGeneratorRef, receiveQRProps>(
                 posterRef.current.appendChild(clone);
                 posterRef.current.style.width = "96%"
                 posterRef.current.style.margin = "0"
+                if(QrSize > 250){
+                    posterRef.current.style.maxWidth = "98%"
+                    posterRef.current.style.marginTop = "30px"
+                    posterRef.current.style.marginBottom = "30px"
+                }
             }
         }, [QrRef, t, TemplateRef])
 

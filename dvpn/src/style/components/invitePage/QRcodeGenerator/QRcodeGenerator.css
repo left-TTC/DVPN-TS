@@ -191,10 +191,6 @@
         font-size: 15px!important;
     }
 
-    .arabic h5{
-        font-size: 24px!important;
-        margin-top: 8px;
-    }
 
     .QRglow{
         width: 620px;
@@ -258,7 +254,7 @@
         flex-direction: column;
         text-align: center;
         justify-content: center;
-        margin-top: 80px;
+        margin-top: 180px;
         width: 100%;
     }
 
@@ -272,9 +268,7 @@
         align-items: center;
         background-color: #141414;
         border-radius: 25px;
-        margin-top: 60px;
-        height: 800px;
-        padding: 20px;
+        padding: 65px;
         overflow: hidden;
         position: relative;
         box-shadow: 0 6px 6px 3px black;
@@ -362,6 +356,8 @@
 
     .dvpnIconOnQR{
         width: 140px;
+        min-width: 140px;
+        max-height: 140px;
     }
 
     .dvpnIconOnQR{
@@ -387,6 +383,38 @@
         background-color: white;
         border-radius: 20px;
     }  
+
+    .domaintypeblock{
+        -webkit-tap-highlight-color: transparent;
+        width: 30%;
+        height: 130px;
+        border-radius: 20px;
+        min-width: 400px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(to right, #08BBFF, #2A76FF);
+        border: none;
+    }
+    .domaintypeblock:focus{
+        background: linear-gradient(to right, #873dee, #002aff) !important;
+    }
+    .domaintypeblock:active {
+        background: linear-gradient(to right, #873dee, #002aff);
+    }
+
+    .domaintypeblock h1{
+        font-size: 36px;
+        color: white;
+    }
+}
+
+@media (1550px < width){
+    .domaintypeblock{
+        margin-top: 200px;
+    }
 }
 
 @media (1550px < width < 1826px){
@@ -401,18 +429,153 @@
         position: absolute;
         right: 1%;
     }
+
+    
 }
 
 @media (601px < width < 1550px){
+    .QROne{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #141414;
+        border-radius: 25px;
+        margin-top: 60px;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 6px 6px 3px black;
+    }
+
     .computerstyle3{
         display: flex;
         flex-direction: column;
         padding-left: 20px;
-        max-width: 60%;
+        max-width: 100%;
     }
     
     .qrbox{
-        position: absolute;
+        position: relative;
         right: 1%;
+    }
+
+    .iconBlcok{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .iconBlcok h4{
+        font-size: 32px;
+        color: white;
+    }
+
+    .wordblock h1{
+        text-align: left;
+        font-size: 26px;
+        color: white;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.2;
+        width: 100%;
+    }
+
+    .wordblock h2{
+        font-size: 26px;
+        color: white;
+        text-align: left;
+        margin: 0;
+        padding-top: 15px;
+        line-height: 1.2;
+    }
+
+    .wordblock h3{
+        font-size: 26px;
+        color: white;
+        text-align: left;
+        line-height: 1.2;
+        padding-top: 15px;
+        width: 100%;
+        margin: 0;
+    }
+
+    .wordblock h5{
+        font-size: 30px;
+        margin: 0;
+        font-weight: 900;
+        color: white;
+        margin-top: 25px;
+        margin-right: 10%;
+        text-align: center;
+    }
+    
+    .wordblock{
+        margin-left: 10px;
+        margin-top: 10px;
+        width: 100%;
+        margin-bottom: 10px;
+        z-index: 10;
+    }
+
+    
+
+    .chinese h3{
+        font-size: 30px!important;
+        margin-top: 25px;
+    }
+
+    .chinese h2{
+        font-size: 30px!important;
+        margin-top: 25px;
+    }
+
+    .chinese h1{
+        font-size: 30px!important;
+        margin-top: 25px;
+    }
+
+    .chinese h5{
+        font-size: 35px!important;
+        margin-top: 36px;
+    }
+
+    .arabic h3{
+        font-size: 30px!important;
+        margin-top: 25px;
+    }
+
+    .arabic h2{
+        font-size: 30px!important;
+        margin-top: 25px;
+    }
+
+    .arabic h1{
+        font-size: 30px!important;
+        margin-top: 25px;
+    }
+
+    .arabic h5{
+        font-size: 35px!important;
+        margin-top: 36px;
+    }
+
+    .english h3{
+        font-size: 30px!important;
+        margin-top: 25px;
+    }
+
+    .english h2{
+        font-size: 30px!important;
+        margin-top: 25px;
+    }
+
+    .english h1{
+        font-size: 30px!important;
+        margin-top: 25px;
+    }
+
+    .english h5{
+        font-size: 35px!important;
+        margin-top: 36px;
     }
 }

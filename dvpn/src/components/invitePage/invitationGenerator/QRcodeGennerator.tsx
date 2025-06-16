@@ -177,7 +177,6 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({
     const [qrsize, setQrsizer] = useState(250)
 
     const [currentDeviceType, setCurrentDeviceType] = useState(() => {
-        // 初始判断设备类型
         const screenWidth = window.innerWidth;
         if (screenWidth < 768) return DeviceType.Phone;
         if (screenWidth >= 768 && screenWidth < 1550) return DeviceType.QR;
@@ -211,9 +210,9 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({
     useEffect(() => {
         console.log("Configuration updated for device:", currentDeviceType);
         if (currentDeviceType !== DeviceType.Phone) {
-            setSlidersPerView(1.5);
+            setSlidersPerView(1.15);
             setSpaceBetween(120);
-            setQrsizer(320);
+            setQrsizer(420);
             if (currentDeviceType === DeviceType.QR) {
                 setQrsizer(250);
             }
@@ -284,7 +283,7 @@ const QRcodeGenerator: React.FC<QRcodeGeneratorProps> = ({
                         <h2>{returnEmoji()}</h2>
                     </button> 
                 </div>
-                <SharePhotoGenerator QrRef={currentCanvasRefObj} languageType={nowLanguageLists[activeIndex]} TemplateRef={QRgeneratorRef} ref={generatorRef}/>
+                <SharePhotoGenerator QrSize={qrsize} QrRef={currentCanvasRefObj} languageType={nowLanguageLists[activeIndex]} TemplateRef={QRgeneratorRef} ref={generatorRef}/>
             </div>
         </div>
     );

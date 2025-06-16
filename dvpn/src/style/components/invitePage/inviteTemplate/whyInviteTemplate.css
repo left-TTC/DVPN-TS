@@ -51,3 +51,51 @@
         margin-top: -10px;
     }
 }
+
+@media (min-width: 601px){
+    .whyInviteOrthers{
+        padding-top: 100px;
+        display: flex;
+        flex-direction: row;justify-content: center;
+        opacity: 0;
+    }
+
+    .p2pwhy{
+        width: 1000px;
+    }
+
+    .wordIntroduce{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        padding: 0;
+    }
+
+    .contentTitle{
+        font-size: 40px;
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    .contentText{
+        font-size: 29px;
+        color: rgb(167, 163, 163);
+        margin: 0;
+    }
+
+    .contentSum{
+        font-size: 29px;
+        color: rgb(167, 163, 163);
+    }
+}
+
+@media ( 601px < width < 1855px){
+    .whyInviteOrthers{
+        padding-top: 100px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+}

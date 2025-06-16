@@ -158,8 +158,9 @@
     .InvitationGeneratorTitlegenerateQRcode{
         display: flex ;
         flex-direction: row;
-        font-size: 5px;
-        width: 80%;
+        font-size: 7px;
+        width: 100%;
+        min-width: 360px;
         justify-content: space-around;
         align-items: center;
         margin-top: 8%;
@@ -175,9 +176,10 @@
     .InvitationGeneratorTitlecopyinvitationcodes{
         display: flex ;
         flex-direction: row;
-        font-size: 6px;
+        font-size: 8px;
         min-width: 300px;
-        width: 80%;
+        width: 100%;
+        min-width: 360px;
         justify-content: space-around;
         align-items: center;
         margin-top: 12%;

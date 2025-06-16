@@ -50,7 +50,7 @@ const FixedToast: React.FC<FixedToastProps> = ({ message, type, onFinish, offset
 
     useEffect(() => {
         const nowDevice = checkWhatDevice()
-        if(nowDevice === DeviceType.Computer){
+        if(nowDevice != DeviceType.Phone){
             setStartdirection(StartDirection.Up)
         }else{
             setStartdirection(StartDirection.Left)
@@ -111,6 +111,37 @@ const FixedToast: React.FC<FixedToastProps> = ({ message, type, onFinish, offset
             onConfirm()
         }
     }
+
+    const [currentDeviceType, setCurrentDeviceType] = useState(() => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth < 768) return DeviceType.Phone;
+            if (screenWidth >= 768 && screenWidth < 1550) return DeviceType.QR;
+            if (screenWidth >= 1550 ) return DeviceType.Computer;
+        });
+            
+    useEffect(() => {
+        const handleResize = () => {
+            const screenWidth = window.innerWidth;
+            let newDevice;
+            if (screenWidth < 768) {
+                newDevice = DeviceType.Phone;
+            } else if (screenWidth >= 768 && screenWidth < 1550) {
+                newDevice = DeviceType.QR;
+            } else {
+                newDevice = DeviceType.Computer
+            }
+            if (newDevice !== currentDeviceType) {
+                setCurrentDeviceType(newDevice);
+                console.log("Device type changed to:", newDevice);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [currentDeviceType]);
 
     let content;
     switch (type) {
